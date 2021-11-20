@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./assets/FontFamilies/Lato-Black_0.ttf";
-import "./assets/FontFamilies/Lato-Bold_0.ttf";
-import "./assets/FontFamilies/Lato-Light_0.ttf";
-import "./assets/FontFamilies/Lato-Regular_0.ttf";
+import "./assets/fontFamilies/Lato-Black_0.ttf";
+import "./assets/fontFamilies/Lato-Bold_0.ttf";
+import "./assets/fontFamilies/Lato-Light_0.ttf";
+import "./assets/fontFamilies/Lato-Regular_0.ttf";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
