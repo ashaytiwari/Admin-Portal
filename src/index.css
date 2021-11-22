@@ -5,6 +5,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --background: #fff;
+  --primary: #0898fc;
+  --text: #000;
+  --grey: #637381;
+  --secondaryBackground: #fff;
+}
+
+[data-theme="dark"] {
+  --background: #161c24;
+  --primary: #0898fc;
+  --text: #fff;
+  --grey: #637381;
+  --secondaryBackground: #212b36;
+}
+
 @font-face {
   font-family: "Lato-Black";
   src: url("./assets/fontFamilies/Lato-Black_0.ttf") format("truetype");

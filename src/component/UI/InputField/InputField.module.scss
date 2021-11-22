@@ -1,3 +1,15 @@
 .input {
   width: 100%;
+
+  input {
+    color: var(--text);
+  }
+
+  label {
+    color: var(--text);
+  }
+
+  fieldset {
+    border: 1px solid var(--grey);
+  }
 }
