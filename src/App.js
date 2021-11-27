@@ -3,6 +3,7 @@ import Login from "./container/LandingPages/Login/Login";
 import React, { useState, useEffect } from "react";
 import ThemeToggler from "./component/ThemeToggler/ThemeToggler";
 import Registration from "./container/LandingPages/Registration/Registration";
+import "./i18n/i18n";
 
 const App = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -23,8 +24,8 @@ const App = () => {
 
   return (
     <div data-theme={theme}>
-      {/* <Login /> */}
-      <Registration />
+      <Login />
+      {/* <Registration /> */}
       <ThemeToggler setTheme={setTheme} />
     </div>
   );

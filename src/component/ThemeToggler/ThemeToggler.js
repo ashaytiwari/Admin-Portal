@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 import styles from "./ThemeToggler.module.scss";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
-import { IconButton, Backdrop } from "@mui/material";
+import { IconButton, Backdrop, MenuItem, Menu } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import TranslateIcon from "@mui/icons-material/Translate";
+import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 const ThemeToggler = (props) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [languageAnchor, setLanguageAnchor] = useState(null);
+  const { t } = useTranslation();
+
+  const open = Boolean(languageAnchor);
+
+  const handleClick = (event) => {
+    setLanguageAnchor(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setLanguageAnchor(null);
+  };
 
   const panelHandler = () => {
     setIsPanelOpen((prevState) => !prevState);
+  };
+
+  // function to handle language changes
+  const languageSelector = (e, langCode) => {
+    i18n.changeLanguage(langCode);
+    handleClose();
   };
 
   // function to switch color themes
@@ -29,14 +50,35 @@ const ThemeToggler = (props) => {
         >
           <div className={styles.themePanel}>
             <div className={styles.header}>
-              <h6>Settings</h6>
+              <h6>{t("common:settings")}</h6>
               <IconButton onClick={panelHandler} className={styles.closeBtn}>
                 <CloseIcon />
               </IconButton>
             </div>
 
+            {/* Language Section */}
             <div className={styles.modeSection}>
-              <h6 className={styles.title}>Mode</h6>
+              <h6 className={styles.title}>{t("common:languages")}</h6>
+              <div
+                className={`${styles.card} ${styles.languageCard}`}
+                onClick={handleClick}
+              >
+                <TranslateIcon />
+              </div>
+              <Menu anchorEl={languageAnchor} open={open} onClose={handleClose}>
+                <MenuItem onClick={(e) => languageSelector(e, "en")}>
+                  {t("common:english")}
+                </MenuItem>
+                <MenuItem onClick={(e) => languageSelector(e, "hi")}>
+                  {t("common:hindi")}
+                </MenuItem>
+              </Menu>
+            </div>
+            {/* Language Section */}
+
+            {/* Mode section */}
+            <div className={styles.modeSection}>
+              <h6 className={styles.title}>{t("common:mode")}</h6>
               <div className={"row"}>
                 <div className={"col-md-6"}>
                   <div
@@ -53,6 +95,7 @@ const ThemeToggler = (props) => {
                 </div>
               </div>
             </div>
+            {/* Mode section */}
           </div>
         </Backdrop>
       ) : (

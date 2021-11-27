@@ -5,8 +5,11 @@ import RegistrationImage from "../../../assets/images/registration.png";
 import InputField from "../../../component/UI/InputField/InputField";
 import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
+import { useTranslation } from "react-i18next";
 
 const Registration = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={`fluid-container ${styles.registrationContainer}`}>
       <div className={"row g-0"}>
@@ -14,7 +17,7 @@ const Registration = () => {
           <div className={styles.card}>
             <img src={Logo} alt={"logo"} />
             <div>
-              <h3>Manage the job more effectively with Portal</h3>
+              <h3>{t("landingPages:registrationCardText")}</h3>
               <img
                 src={RegistrationImage}
                 alt={"registration"}
@@ -26,16 +29,17 @@ const Registration = () => {
         <div className={"col-md-7"}>
           <div className={styles.form}>
             <p className={styles.loginText}>
-              Already have an account? <span>Login</span>
+              {t("landingPages:alreadyHaveAccount")}{" "}
+              <span>{t("actions:login")}</span>
             </p>
-            <h3>Get started with Portal</h3>
-            <p>Enter your details below.</p>
+            <h3>{t("landingPages:getStarted")}</h3>
+            <p>{t("landingPages:enterDetails")}</p>
             <div>
               <div className={`${styles.formControl} row`}>
                 <div className={"col-md-6"}>
                   <InputField
                     id={"firstName"}
-                    label={"First Name"}
+                    label={t("form:firstName")}
                     variant={"outlined"}
                     type={"text"}
                   />
@@ -43,7 +47,7 @@ const Registration = () => {
                 <div className={"col-md-6"}>
                   <InputField
                     id={"lastName"}
-                    label={"Last Name"}
+                    label={t("form:lastName")}
                     variant={"outlined"}
                     type={"text"}
                   />
@@ -52,7 +56,7 @@ const Registration = () => {
               <div className={styles.formControl}>
                 <InputField
                   id={"email"}
-                  label={"Email Address"}
+                  label={t("form:email")}
                   variant={"outlined"}
                   type={"email"}
                 />
@@ -60,7 +64,7 @@ const Registration = () => {
               <div className={styles.formControl}>
                 <InputField
                   id={"mobile"}
-                  label={"Mobile Number"}
+                  label={t("form:mobileNumber")}
                   variant={"outlined"}
                   type={"number"}
                 />
@@ -69,13 +73,15 @@ const Registration = () => {
                 <PasswordField
                   id={"password"}
                   variant={"outlined"}
-                  label={"Password"}
+                  label={t("form:password")}
                 />
               </div>
-              <Button>Register</Button>
+              <Button>{t("actions:register")}</Button>
               <p className={styles.terms}>
-                By registering, I agree to Portal <span>Terms of Service</span>{" "}
-                and <span>Privacy Policy</span>
+                {t("landingPages:byRegistering")}{" "}
+                <span>{t("landingPages:termsOfService")}</span>{" "}
+                {t("landingPages:and")}{" "}
+                <span>{t("landingPages:privacyPolicy")}</span>
               </p>
             </div>
           </div>
