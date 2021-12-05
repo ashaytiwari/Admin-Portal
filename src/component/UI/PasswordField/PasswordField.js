@@ -3,7 +3,8 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
-  IconButton
+  IconButton,
+  FormHelperText
 } from "@mui/material";
 import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -15,13 +16,19 @@ const PasswordField = (props) => {
 
   return (
     <FormControl variant={props.variant} className={styles.formControl}>
-      <InputLabel htmlFor={props.id}>{props.label}</InputLabel>
+      <InputLabel
+        htmlFor={props.id}
+        className={props.error ? styles.errorLabel : styles.label}
+      >
+        {props.label}
+      </InputLabel>
       <OutlinedInput
         id={props.id}
         type={showPassword ? "text" : "password"}
         value={props.value}
         onChange={props.onChange}
         autoComplete="off"
+        onBlur={props.onBlur}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -34,7 +41,9 @@ const PasswordField = (props) => {
           </InputAdornment>
         }
         label="Password"
+        error={props.error}
       />
+      {props.error && <FormHelperText>{props.helperText}</FormHelperText>}
     </FormControl>
   );
 };

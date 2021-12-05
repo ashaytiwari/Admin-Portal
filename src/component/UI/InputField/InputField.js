@@ -13,6 +13,9 @@ const InputField = (props) => {
       value={props.value}
       onChange={props.onChange}
       autoComplete="off"
+      error={props.error}
+      helperText={props.helperText}
+      onBlur={props.onBlur}
     />
   );
 };
