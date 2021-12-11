@@ -9,9 +9,11 @@ import { useTranslation } from "react-i18next";
 import { loginService } from "../../../services/authServices/authServices";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
 import { useFormik } from "formik";
+import { useSnackbar } from "notistack";
 
 const Login = () => {
   const { t } = useTranslation();
+  const { enqueueSnackbar } = useSnackbar();
 
   const validate = (values) => {
     const errors = {};
@@ -47,7 +49,15 @@ const Login = () => {
       password: formik.values.password
     };
     loginService(param).then((res) => {
-      console.log(res);
+      if (res.data.statuscode === 200) {
+        enqueueSnackbar(res.data.message, {
+          variant: "success"
+        });
+      } else {
+        enqueueSnackbar(res.data.message, {
+          variant: "error"
+        });
+      }
     });
   };
 
