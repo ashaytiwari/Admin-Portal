@@ -8,49 +8,38 @@ import Button from "../../../component/UI/Button/Button";
 import { useTranslation } from "react-i18next";
 import { loginService } from "../../../services/authServices/authServices";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
+import { useFormik } from "formik";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isEmailError, setIsEmailError] = useState(false);
-  const [isPasswordError, setIsPasswordError] = useState(false);
-  const [emailHelperText, setEmailHelperText] = useState(null);
-  const [passwordHelperText, setPasswordHelperText] = useState(null);
-
   const { t } = useTranslation();
 
-  const validateEmail = () => {
-    if (!email) {
-      setIsEmailError(true);
-      setEmailHelperText(t("formValidationMessage:emailRequired"));
-    } else if (emailValidation(email)) {
-      setIsEmailError(true);
-      setEmailHelperText(t("formValidationMessage:emailValid"));
-    } else {
-      setIsEmailError(false);
-      setEmailHelperText(null);
+  const validate = (values) => {
+    const errors = {};
+    // validating email
+    if (!values.email) {
+      errors.email = t("formValidationMessage:required");
+    } else if (emailValidation(values.email)) {
+      errors.email = t("formValidationMessage:emailValid");
     }
-  };
 
-  const validatePassword = () => {
-    if (!password) {
-      setIsPasswordError(true);
-      setPasswordHelperText(t("formValidationMessage:passwordRequired"));
-    } else {
-      setIsPasswordError(false);
-      setPasswordHelperText(null);
+    // validating password
+    if (!values.password) {
+      errors.password = t("formValidationMessage:required");
     }
+
+    return errors;
   };
 
-  const onEmailChange = (e) => {
-    setEmail(e.target.value);
-    validateEmail();
-  };
-
-  const onPasswordChange = (e) => {
-    setPassword(e.target.value);
-    validatePassword();
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: ""
+    },
+    validate,
+    onSubmit: (values) => {
+      console.log(values);
+    }
+  });
 
   const loginHandler = () => {};
 
@@ -76,39 +65,48 @@ const Login = () => {
             <p className={styles.enterDetails}>
               {t("landingPages:enterDetails")}
             </p>
-            <div className={styles.formContainer}>
+            <form
+              className={styles.formContainer}
+              onSubmit={formik.handleSubmit}
+            >
               <div className={styles.formGroup}>
                 <InputField
                   id={"email"}
+                  name={"email"}
                   label={t("form:email")}
                   variant={"outlined"}
                   type={"email"}
-                  value={email}
-                  onChange={(e) => onEmailChange(e)}
-                  error={isEmailError}
-                  helperText={emailHelperText}
-                  onBlur={validateEmail}
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.errors.email && formik.touched.email ? true : false
+                  }
+                  helperText={formik.errors.email}
+                  onBlur={formik.handleBlur}
                 />
               </div>
               <div className={styles.formGroup}>
                 <PasswordField
                   id={"password"}
+                  name={"password"}
                   variant={"outlined"}
                   label={t("form:password")}
-                  value={password}
-                  onChange={(e) => onPasswordChange(e)}
-                  error={isPasswordError}
-                  helperText={passwordHelperText}
-                  onBlur={validatePassword}
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.errors.password && formik.touched.password
+                      ? true
+                      : false
+                  }
+                  helperText={formik.errors.password}
+                  onBlur={formik.handleBlur}
                 />
               </div>
               <p className={styles.forgetPassText}>
                 {t("landingPages:forgotPassword")}
               </p>
-              <Button onClick={loginHandler} disabled={!email || !password}>
-                {t("actions:login")}
-              </Button>
-            </div>
+              <Button type={"submit"}>{t("actions:login")}</Button>
+            </form>
           </div>
         </div>
       </div>

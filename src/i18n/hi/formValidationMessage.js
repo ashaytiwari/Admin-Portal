@@ -1,4 +1,4 @@
 export default {
-  emailRequired: "Email is required",
-  emailValid: "Enter valid email address"
+  emailValid: "मान्य ईमेल पता दर्ज करें",
+  required: "आवश्यक"
 };

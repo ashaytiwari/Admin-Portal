@@ -6,6 +6,7 @@ const InputField = (props) => {
   return (
     <TextField
       id={props.id}
+      name={props.name}
       type={props.type}
       label={props.label}
       variant={props.variant}
