@@ -36,12 +36,20 @@ const Login = () => {
       password: ""
     },
     validate,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values, { resetForm }) => {
+      loginHandler();
     }
   });
 
-  const loginHandler = () => {};
+  const loginHandler = () => {
+    const param = {
+      email_id: formik.values.email,
+      password: formik.values.password
+    };
+    loginService(param).then((res) => {
+      console.log(res);
+    });
+  };
 
   return (
     <div className={`fluid-container ${styles.loginContainer}`}>

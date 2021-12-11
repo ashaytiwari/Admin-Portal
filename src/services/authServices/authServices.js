@@ -1,10 +1,7 @@
-import customAxios from "../../axios/axios";
+import axios from "../../axios/axios";
 
-export const loginService = () => {
-  console.log("Hello");
-  customAxios
-    .get("https://jsonplaceholder.typicode.com/todos/1")
-    .then((res) => {
-      console.log(res);
-    });
+export const loginService = async (data) => {
+  const url = "https://develop.hipoz.com/api/commanloginuser";
+  const res = await axios.post(url, data);
+  return res;
 };
