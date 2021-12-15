@@ -31,7 +31,7 @@ const Registration = () => {
         <div className={"col-md-7"}>
           <div className={styles.form}>
             <p className={styles.loginText}>
-              {t("landingPages:alreadyHaveAccount")}{" "}
+              {t("landingPages:alreadyHaveAccount")}
               <span onClick={() => navigate("/login")}>
                 {t("actions:login")}
               </span>
