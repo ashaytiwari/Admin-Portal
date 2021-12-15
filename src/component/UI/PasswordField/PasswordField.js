@@ -29,6 +29,7 @@ const PasswordField = (props) => {
         onChange={props.onChange}
         autoComplete="off"
         onBlur={props.onBlur}
+        onKeyUp={props.onKeyUp}
         endAdornment={
           <InputAdornment position="end">
             <IconButton

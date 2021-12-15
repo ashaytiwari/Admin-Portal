@@ -6,8 +6,10 @@ import InputField from "../../../component/UI/InputField/InputField";
 import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
@@ -30,7 +32,9 @@ const Registration = () => {
           <div className={styles.form}>
             <p className={styles.loginText}>
               {t("landingPages:alreadyHaveAccount")}{" "}
-              <span>{t("actions:login")}</span>
+              <span onClick={() => navigate("/login")}>
+                {t("actions:login")}
+              </span>
             </p>
             <h3>{t("landingPages:getStarted")}</h3>
             <p>{t("landingPages:enterDetails")}</p>

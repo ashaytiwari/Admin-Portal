@@ -10,10 +10,14 @@ import { loginService } from "../../../services/authServices/authServices";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
+import Loader from "../../../component/Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const validate = (values) => {
     const errors = {};
@@ -39,6 +43,7 @@ const Login = () => {
     },
     validate,
     onSubmit: (values, { resetForm }) => {
+      setIsLoading(true);
       loginHandler();
     }
   });
@@ -50,16 +55,29 @@ const Login = () => {
     };
     loginService(param).then((res) => {
       if (res.data.statuscode === 200) {
+        formik.resetForm();
         enqueueSnackbar(res.data.message, {
           variant: "success"
         });
+        setIsLoading(false);
       } else {
         enqueueSnackbar(res.data.message, {
           variant: "error"
         });
+        setIsLoading(false);
       }
     });
   };
+
+  const enterKeyHandler = (e) => {
+    if (e.keyCode === 13) {
+      loginHandler();
+    }
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={`fluid-container ${styles.loginContainer}`}>
@@ -77,7 +95,9 @@ const Login = () => {
           <div className={styles.loginForm}>
             <p className={styles.registrationText}>
               {t("landingPages:dontHaveAccount")}{" "}
-              <span> {t("landingPages:getStart")} </span>
+              <span onClick={() => navigate("/registration")}>
+                {t("landingPages:getStart")}{" "}
+              </span>
             </p>
             <h3>{t("landingPages:signToPortal")}</h3>
             <p className={styles.enterDetails}>
@@ -118,6 +138,7 @@ const Login = () => {
                   }
                   helperText={formik.errors.password}
                   onBlur={formik.handleBlur}
+                  onKeyUp={(e) => enterKeyHandler(e)}
                 />
               </div>
               <p className={styles.forgetPassText}>
