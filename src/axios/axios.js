@@ -14,7 +14,8 @@ const responseHandler = (response) => {
 
 const errorHandler = (error) => {
   console.log(error, " <<<<<<<<<<<<<<<<<<error ");
-  return error;
+  window.location = "/error";
+  // return error;
 };
 
 customAxios.interceptors.request.use(
