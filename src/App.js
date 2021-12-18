@@ -7,6 +7,7 @@ import { Slide, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./i18n/i18n";
 import RouteComponent from "./router/RouteComponent";
+import NetworkDetector from "./component/NetworkDetector/NetworkDetector";
 
 const App = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -54,6 +55,7 @@ const App = () => {
       <div data-theme={theme}>
         <RouteComponent />
         <ThemeToggler setTheme={setTheme} />
+        <NetworkDetector />
       </div>
     </SnackbarProvider>
   );

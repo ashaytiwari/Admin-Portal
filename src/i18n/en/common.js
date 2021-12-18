@@ -3,5 +3,7 @@ export default {
   languages: "Languages",
   mode: "Mode",
   english: "English",
-  hindi: "हिंदी"
+  hindi: "हिंदी",
+  connectedToInternet: "Connected to internet",
+  connectionLost: "Internet connection lost..."
 };

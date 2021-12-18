@@ -3,5 +3,7 @@ export default {
   languages: "भाषा",
   mode: "तरीका",
   english: "English",
-  hindi: "हिंदी"
+  hindi: "हिंदी",
+  connectedToInternet: "इंटरनेट से जुड़ा है...",
+  connectionLost: "इंटरनेट कनेक्शन खो गया..."
 };
