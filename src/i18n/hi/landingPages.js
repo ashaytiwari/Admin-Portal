@@ -15,5 +15,23 @@ export default {
   dontHaveAccount: "खाता नहीं है?",
   signToPortal: "पोर्टल में साइन इन करें",
   forgotPassword: "पासवर्ड भूल गए",
-  getStart: "शुरू हो जाओ"
+  getStart: "शुरू हो जाओ",
+
+  // Forgot Password Page Translations
+  forgotYourPassword: "क्या आप अपना पासवर्ड भूल गए?",
+  pleaseEnter:
+    "कृपया अपने खाते से संबद्ध ईमेल पता दर्ज करें और हम आपको अपना पासवर्ड",
+  willEmail: "रीसेट करने के लिए एक लिंक ईमेल करेगा।",
+  resetPassword: "पासवर्ड रीसेट",
+
+  // Not Found Page Translations
+  pageNotFound: "पृष्ठ नहीं मिला",
+  oopsPage1:
+    "उफ़! आप जिस पेज की तलाश कर रहे हैं वह मौजूद नहीं है। इसके हो जाने के आसार थे",
+  oopsPage2: "स्थानांतरित या हटाया गया।",
+
+  // Server Error Page Translations
+  internalServerError: "500 आंतरिक सर्वर त्रुटि",
+  oopsError1: "उफ़! कुछ गलत हो गया। उस असुविधा के लिए खेद है",
+  oopsError2: "जिस पर हम काम कर रहे हैं"
 };

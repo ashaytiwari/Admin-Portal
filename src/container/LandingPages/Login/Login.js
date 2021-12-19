@@ -50,8 +50,8 @@ const Login = () => {
 
   const loginHandler = () => {
     const param = {
-      email_id: formik.values.email
-      // password: formik.values.password
+      email_id: formik.values.email,
+      password: formik.values.password
     };
     loginService(param).then((res) => {
       if (res.data.statuscode === 200) {
@@ -141,7 +141,10 @@ const Login = () => {
                   onKeyUp={(e) => enterKeyHandler(e)}
                 />
               </div>
-              <p className={styles.forgetPassText}>
+              <p
+                className={styles.forgetPassText}
+                onClick={() => navigate("/forgotPassword")}
+              >
                 {t("landingPages:forgotPassword")}
               </p>
               <Button type={"submit"}>{t("actions:login")}</Button>
