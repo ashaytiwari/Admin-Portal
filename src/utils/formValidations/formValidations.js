@@ -14,3 +14,31 @@ export const emailValidation = (email) => {
     return false;
   }
 };
+
+/**
+ * function to validate indian mobile number
+ * @param {*} mobileNumber
+ * @returns true/false
+ */
+export const validateMobileNumber = (mobileNumber) => {
+  let regex = new RegExp(/^[6-9]\d{9}$/);
+
+  if (regex.test(mobileNumber)) {
+    return false;
+  } else {
+    return true;
+  }
+}; //end of validateMobileNumber
+
+/**
+ * function to validate password length
+ * @param {*} password
+ * @returns true/false
+ */
+export const validatePassword = (password) => {
+  if (password.length >= 8) {
+    return false;
+  } else {
+    return true;
+  }
+}; // end of validatePassword

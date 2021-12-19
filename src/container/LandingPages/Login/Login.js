@@ -42,7 +42,7 @@ const Login = () => {
       password: ""
     },
     validate,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: () => {
       setIsLoading(true);
       loginHandler();
     }
@@ -50,8 +50,8 @@ const Login = () => {
 
   const loginHandler = () => {
     const param = {
-      email_id: formik.values.email,
-      password: formik.values.password
+      email_id: formik.values.email
+      // password: formik.values.password
     };
     loginService(param).then((res) => {
       if (res.data.statuscode === 200) {
