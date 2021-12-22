@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import ErrorPage from "../container/ErrorPage/ErrorPage";
 import ForgotPassword from "../container/LandingPages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../container/LandingPages/ResetPassword/ResetPassword";
 
 const Login = React.lazy(() => import("../container/LandingPages/Login/Login"));
 const Registration = React.lazy(() =>
@@ -28,6 +29,11 @@ const routes = [
     path: "/forgotPassword",
     name: "ForgotPassword",
     component: <ForgotPassword />
+  },
+  {
+    path: "/resetPassword/:tokenId",
+    name: "ResetPassword",
+    component: <ResetPassword />
   },
   {
     path: "/error",
