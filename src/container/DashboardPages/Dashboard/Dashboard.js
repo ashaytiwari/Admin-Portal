@@ -1,7 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -14,8 +13,9 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import styles from "./Dashboard.module.scss";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const Dashboard = (props) => {
   const { window } = props;
@@ -28,7 +28,6 @@ const Dashboard = (props) => {
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
@@ -58,13 +57,14 @@ const Dashboard = (props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
+      {/* Header Section */}
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` }
         }}
+        className={styles.header}
       >
         <Toolbar>
           <IconButton
@@ -81,10 +81,13 @@ const Dashboard = (props) => {
           </Typography>
         </Toolbar>
       </AppBar>
+      {/* Header Section */}
+
+      {/* Drawer Section */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
+        className={styles.drawer}
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
@@ -99,7 +102,8 @@ const Dashboard = (props) => {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth
+              width: drawerWidth,
+              borderRight: "1px solid #707070"
             }
           }}
         >
@@ -111,14 +115,19 @@ const Dashboard = (props) => {
             display: { xs: "none", sm: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth
+              width: drawerWidth,
+              borderRight: "1px dashed #707070"
             }
           }}
+          className={styles.drawer}
           open
         >
           {drawer}
         </Drawer>
       </Box>
+      {/* Drawer Section */}
+
+      {/* Body Section */}
       <Box
         component="main"
         sx={{
@@ -126,6 +135,7 @@ const Dashboard = (props) => {
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` }
         }}
+        className={styles.body}
       >
         <Toolbar />
         <Typography paragraph>
@@ -218,6 +228,7 @@ const Dashboard = (props) => {
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
       </Box>
+      {/* Body Section */}
     </Box>
   );
 };
