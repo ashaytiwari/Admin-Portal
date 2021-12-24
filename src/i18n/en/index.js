@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import actions from "./actions";
 import landingPages from "./landingPages";
 import form from "./form";

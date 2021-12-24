@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   // Registration Page Translations
   registrationCardText: "Manage the job more effectively with Portal",

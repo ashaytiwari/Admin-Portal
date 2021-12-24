@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   emailValid: "Enter valid email address",
   required: "Required",

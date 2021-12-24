@@ -17,3 +17,9 @@ export const forgotPassword = async (data) => {
   const res = await axios.post(url, data);
   return res;
 };
+
+export const resetPassword = async (data) => {
+  const url = "https://beelytical.kritin.tech/api/commanresetpassword";
+  const res = await axios.post(url, data);
+  return res;
+};

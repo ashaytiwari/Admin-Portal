@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * function to validate email
  * @param {*} email

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ResetPassword.module.scss";
 import Logo from "../../../assets/images/logo.png";
 import { useParams } from "react-router-dom";
@@ -7,11 +7,19 @@ import Button from "../../../component/UI/Button/Button";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import { validatePassword } from "../../../utils/formValidations/formValidations";
+import { resetPassword } from "../../../services/authServices/authServices";
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../../component/Loader/Loader";
 
 const ResetPassword = () => {
   const params = useParams();
   const { t } = useTranslation();
-  const sessionEmail = localStorage.getItem("Email");
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+  const email = localStorage.getItem("EmailAuth");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const validate = (values) => {
     const errors = {};
@@ -38,9 +46,38 @@ const ResetPassword = () => {
     },
     validate,
     onSubmit: () => {
-      console.log(params.tokenId, sessionEmail);
+      setIsLoading(true);
+      handleResetPassword();
     }
   });
+
+  const handleResetPassword = () => {
+    const param = {
+      email_id: email,
+      newpassword: formik.values.confirmPassword,
+      token: params.tokenId
+    };
+    resetPassword(param).then((res) => {
+      if (res.data.statuscode === 200) {
+        formik.resetForm();
+        setIsLoading(false);
+        enqueueSnackbar(res.data.message, {
+          variant: "success"
+        });
+        localStorage.removeItem("EmailAuth");
+        navigate("/login");
+      } else {
+        setIsLoading(false);
+        enqueueSnackbar(res.data.message, {
+          variant: "error"
+        });
+      }
+    });
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.wrapper}>
