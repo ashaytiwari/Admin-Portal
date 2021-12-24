@@ -43,7 +43,7 @@ const NetworkDetector = () => {
       }
       arrow
     >
-      <div className={styles.networkDetector}>
+      <div className={styles.networkCard}>
         {isInternetConnected ? (
           <img src={Online} alt="online" />
         ) : (

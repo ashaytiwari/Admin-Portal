@@ -1,13 +1,12 @@
 import "./App.scss";
 import React, { useState, useEffect } from "react";
-import ThemeToggler from "./component/ThemeToggler/ThemeToggler";
+import Settings from "./component/Settings/Settings";
 import { SnackbarProvider } from "notistack";
 import config from "./config/config.json";
 import { Slide, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./i18n/i18n";
 import RouteComponent from "./router/RouteComponent";
-import NetworkDetector from "./component/NetworkDetector/NetworkDetector";
 
 const App = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -54,8 +53,7 @@ const App = () => {
     >
       <div data-theme={theme}>
         <RouteComponent />
-        <ThemeToggler setTheme={setTheme} />
-        <NetworkDetector />
+        <Settings setTheme={setTheme} />
       </div>
     </SnackbarProvider>
   );
