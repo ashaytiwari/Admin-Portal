@@ -4,5 +4,6 @@
     "HORIZONTAL_POSITION": "right",
     "PREVENT_DUPLICATE": true,
     "AUTOHIDE_DURATION_IN_MILI_SECOND": 5000
-  }
+  },
+  "ENCRYPTION_KEY": "asdf1234!@#$asdf1234!@#$"
 }

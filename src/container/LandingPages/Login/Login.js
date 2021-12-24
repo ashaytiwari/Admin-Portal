@@ -12,11 +12,13 @@ import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import { setLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
 
 const Login = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const validate = (values) => {
@@ -55,6 +57,7 @@ const Login = () => {
     };
     loginService(param).then((res) => {
       if (res.data.statuscode === 200) {
+        setLocalStorage(res.data?.data[0]);
         formik.resetForm();
         enqueueSnackbar(res.data.message, {
           variant: "success"

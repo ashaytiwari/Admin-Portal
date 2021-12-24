@@ -16,6 +16,7 @@ import {
 import { registrationService } from "../../../services/authServices/authServices";
 import Loader from "../../../component/Loader/Loader";
 import { useSnackbar } from "notistack";
+import { setLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -123,6 +124,7 @@ const Registration = () => {
 
     registrationService(param).then((res) => {
       if (res.data.statuscode === 200) {
+        setLocalStorage(res.data?.data[0]);
         formik.resetForm();
         enqueueSnackbar(res.data.message, {
           variant: "success"
