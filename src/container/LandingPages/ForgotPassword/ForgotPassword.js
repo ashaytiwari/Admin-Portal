@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
-import { forgotPassword } from "../../../services/authServices/authServices";
+import { forgotPassword } from "../../../services/authServices";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
 

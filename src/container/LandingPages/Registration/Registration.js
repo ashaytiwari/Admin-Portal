@@ -13,7 +13,7 @@ import {
   validateMobileNumber,
   validatePassword
 } from "../../../utils/formValidations/formValidations";
-import { registrationService } from "../../../services/authServices/authServices";
+import { registrationService } from "../../../services/authServices";
 import Loader from "../../../component/Loader/Loader";
 import { useSnackbar } from "notistack";
 import { setLocalStorage } from "../../../utils/globalFunctions/globalFunctions";

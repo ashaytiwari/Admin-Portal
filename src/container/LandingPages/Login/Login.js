@@ -6,7 +6,7 @@ import InputField from "../../../component/UI/InputField/InputField";
 import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useTranslation } from "react-i18next";
-import { loginService } from "../../../services/authServices/authServices";
+import { loginService } from "../../../services/authServices";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
