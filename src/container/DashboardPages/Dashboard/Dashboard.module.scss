@@ -1,9 +1,11 @@
 .header {
   background-color: var(--secondaryBackground) !important;
+  backdrop-filter: blur(10px) saturate(162%);
+  -webkit-backdrop-filter: blur(10px) saturate(162%);
 }
 
 .drawer div {
-  background-color: var(--secondaryBackground) !important;
+  background-color: var(--secondaryBackground);
 }
 
 .body {

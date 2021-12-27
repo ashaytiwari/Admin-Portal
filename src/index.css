@@ -8,17 +8,21 @@ body {
 :root {
   --background: #fff;
   --primary: #0898fc;
+  --lightPrimary: #edfafe;
   --text: #000;
   --grey: #637381;
   --secondaryBackground: #fff;
+  --hoverGrey: #f5f5f5;
 }
 
 [data-theme="dark"] {
   --background: #161c24;
   --primary: #0898fc;
+  --lightPrimary: #153847;
   --text: #fff;
   --grey: #637381;
   --secondaryBackground: #212b36;
+  --hoverGrey: #637381;
 }
 
 @font-face {
