@@ -36,11 +36,6 @@ const routes = [
     name: "ResetPassword",
     component: <ResetPassword />
   },
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   component: <Dashboard />
-  // },
   {
     path: "/error",
     name: "Error",
