@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ResetPassword.module.scss";
 import Logo from "../../../assets/images/logo.png";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useFormik } from "formik";
@@ -11,6 +11,7 @@ import { resetPassword } from "../../../services/authServices";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../component/Loader/Loader";
+import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
 
 const ResetPassword = () => {
   const params = useParams();
@@ -18,6 +19,7 @@ const ResetPassword = () => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const email = localStorage.getItem("EmailAuth");
+  const user = getLocalStorage();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,6 +66,7 @@ const ResetPassword = () => {
         enqueueSnackbar(res.data.message, {
           variant: "success"
         });
+        navigate("/dashboard");
         localStorage.removeItem("EmailAuth");
         navigate("/login");
       } else {
@@ -77,6 +80,10 @@ const ResetPassword = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (user) {
+    return <Navigate replace to={"/dashboard"} />;
   }
 
   return (

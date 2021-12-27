@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import Dashboard from "../container/DashboardPages/Dashboard/Dashboard";
+
 import ErrorPage from "../container/ErrorPage/ErrorPage";
 import ForgotPassword from "../container/LandingPages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../container/LandingPages/ResetPassword/ResetPassword";
@@ -36,11 +36,11 @@ const routes = [
     name: "ResetPassword",
     component: <ResetPassword />
   },
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: <Dashboard />
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   component: <Dashboard />
+  // },
   {
     path: "/error",
     name: "Error",

@@ -8,11 +8,16 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import styles from "./Dashboard.module.scss";
 import DrawerSidebar from "../../../component/DrawerSidebar/DrawerSidebar";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import Home from "../Home/Home";
+import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
 
 const drawerWidth = 280;
 
 const Dashboard = (props) => {
   const { window } = props;
+  const location = useLocation();
+  const user = getLocalStorage();
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -22,6 +27,11 @@ const Dashboard = (props) => {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  if (!user) {
+    console.log("Logout");
+    return <Navigate replace to={"/login"} />;
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -108,7 +118,7 @@ const Dashboard = (props) => {
         className={styles.body}
       >
         <Toolbar />
-        {props.children}
+        {location.pathname === "/dashboard" ? <Home /> : <Outlet />}
       </Box>
       {/* Body Section */}
     </Box>

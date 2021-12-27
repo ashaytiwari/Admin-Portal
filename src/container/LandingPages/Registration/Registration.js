@@ -6,7 +6,7 @@ import InputField from "../../../component/UI/InputField/InputField";
 import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import {
   emailValidation,
@@ -16,12 +16,16 @@ import {
 import { registrationService } from "../../../services/authServices";
 import Loader from "../../../component/Loader/Loader";
 import { useSnackbar } from "notistack";
-import { setLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
+import {
+  getLocalStorage,
+  setLocalStorage
+} from "../../../utils/globalFunctions/globalFunctions";
 
 const Registration = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
+  const user = getLocalStorage();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -141,6 +145,10 @@ const Registration = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (user) {
+    return <Navigate replace to={"/dashboard"} />;
   }
 
   return (

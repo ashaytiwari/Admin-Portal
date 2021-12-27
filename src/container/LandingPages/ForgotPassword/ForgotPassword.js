@@ -3,18 +3,20 @@ import styles from "./ForgotPassword.module.scss";
 import Logo from "../../../assets/images/logo.png";
 import InputField from "../../../component/UI/InputField/InputField";
 import Button from "../../../component/UI/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import { emailValidation } from "../../../utils/formValidations/formValidations";
 import { forgotPassword } from "../../../services/authServices";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
+import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
+  const user = getLocalStorage();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,6 +66,10 @@ const ForgotPassword = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (user) {
+    return <Navigate replace to={"/dashboard"} />;
   }
 
   return (

@@ -11,9 +11,13 @@ export const setLocalStorage = (data) => {
 
 export const getLocalStorage = () => {
   let userFromStorage = localStorage.getItem("user_info");
-  let bytes = CryptoJs.AES.decrypt(userFromStorage, config.ENCRYPTION_KEY);
-  let decryptedData = JSON.parse(bytes.toString(CryptoJs.enc.Utf8));
-  return decryptedData;
+  if (userFromStorage) {
+    let bytes = CryptoJs.AES.decrypt(userFromStorage, config.ENCRYPTION_KEY);
+    let decryptedData = JSON.parse(bytes.toString(CryptoJs.enc.Utf8));
+    return decryptedData;
+  } else {
+    return userFromStorage;
+  }
 };
 
 export const removeDataFromLocalStorage = () => {

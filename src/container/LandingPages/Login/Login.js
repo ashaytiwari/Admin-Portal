@@ -11,13 +11,17 @@ import { emailValidation } from "../../../utils/formValidations/formValidations"
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
-import { useNavigate } from "react-router-dom";
-import { setLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
+import { Navigate, useNavigate } from "react-router-dom";
+import {
+  getLocalStorage,
+  setLocalStorage
+} from "../../../utils/globalFunctions/globalFunctions";
 
 const Login = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
+  const user = getLocalStorage();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -59,6 +63,7 @@ const Login = () => {
       if (res.data.statuscode === 200) {
         setLocalStorage(res.data?.data[0]);
         formik.resetForm();
+        navigate("/dashboard");
         enqueueSnackbar(res.data.message, {
           variant: "success"
         });
@@ -80,6 +85,10 @@ const Login = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (user) {
+    return <Navigate replace to={"/dashboard"} />;
   }
 
   return (
