@@ -4,6 +4,7 @@ import routes from "./routes";
 import Loader from "../component/Loader/Loader";
 import NotFound from "../container/NotFound/NotFound";
 import Dashboard from "../container/DashboardPages/Dashboard/Dashboard";
+import Hogwarts from "../container/DashboardPages/HarryPotter/Hogwarts/Hogwarts";
 
 const RouteComponent = () => {
   return (
@@ -25,7 +26,7 @@ const RouteComponent = () => {
 
         {/* Dashboard Routes */}
         <Route path={"dashboard"} element={<Dashboard />}>
-          <Route path={"harryPotter"} element={<h4>HarryPotter</h4>} />
+          <Route path={"harryPotter"} element={<Hogwarts />} />
           <Route path={"profile"} element={<h4>Profile</h4>} />
           <Route path={"settings"} element={<h4>settings</h4>} />
         </Route>
