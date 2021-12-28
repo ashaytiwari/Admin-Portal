@@ -1,0 +1,1 @@
+export const SET_HP_CHARACTERS = "SET_HP_CHARACTERS";

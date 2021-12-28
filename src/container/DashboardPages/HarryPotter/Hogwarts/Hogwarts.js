@@ -6,10 +6,18 @@ import Slytherin from "../../../../assets/images/harryPotter/slytherin.png";
 import Ravenclaw from "../../../../assets/images/harryPotter/ravenclaw.png";
 import Hufflepuff from "../../../../assets/images/harryPotter/hufflepuff.png";
 import CommonRoom from "../../../../assets/images/harryPotter/houses.jpg";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const HouseCard = (props) => {
+  const navigate = useNavigate();
+
   return (
-    <div className={`${props.background} ${styles.houseCard}`}>
+    <div
+      className={`${props.background} ${styles.houseCard}`}
+      onClick={() =>
+        navigate(`/dashboard/harryPotter/${props.keys}`, { state: props })
+      }
+    >
       <img src={props.image} alt={props.title} />
       <h6>{props.title}</h6>
     </div>
@@ -17,6 +25,12 @@ const HouseCard = (props) => {
 };
 
 const Hogwarts = () => {
+  const location = useLocation();
+
+  if (location.pathname !== "/dashboard/harryPotter") {
+    return <Outlet />;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -32,11 +46,13 @@ const Hogwarts = () => {
             image={Gryffindor}
             title={"Gryffindor"}
             background={styles.gryffindorBG}
+            keys={"gryffindor"}
           />
           <HouseCard
             image={Slytherin}
             title={"Slytherin"}
             background={styles.slytherinBG}
+            keys={"slytherin"}
           />
         </div>
         <div className={styles.row}>
@@ -44,11 +60,13 @@ const Hogwarts = () => {
             image={Ravenclaw}
             title={"Ravenclaw"}
             background={styles.ravenclawBG}
+            keys={"ravenclaw"}
           />
           <HouseCard
             image={Hufflepuff}
             title={"Hufflepuff"}
             background={styles.hufflepuffBG}
+            keys={"hufflepuff"}
           />
         </div>
         <div className={styles.row}>
@@ -56,6 +74,7 @@ const Hogwarts = () => {
             image={CommonRoom}
             title={"Common Room"}
             background={styles.commonBg}
+            keys={"commonRoom"}
           />
         </div>
       </div>

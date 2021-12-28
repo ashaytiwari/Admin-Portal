@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import dummyReducer from "./dummyReducer";
+import harryPotterReducer from "./harryPotter.reducer";
 
 export default combineReducers({
-  dummy: dummyReducer
+  harryPotter: harryPotterReducer
 });

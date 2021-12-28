@@ -8,7 +8,7 @@ import "./assets/fontFamilies/Lato-Bold_0.ttf";
 import "./assets/fontFamilies/Lato-Light_0.ttf";
 import "./assets/fontFamilies/Lato-Regular_0.ttf";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Provider } from "redux";
+import { Provider } from "react-redux";
 import store from "./redux/store";
 
 ReactDOM.render(

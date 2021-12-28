@@ -6,8 +6,6 @@ const SidebarItem = ({ data, key }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-
   return (
     <div
       className={`${location.pathname === data.link && styles.activeItem} ${
