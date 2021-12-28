@@ -7,6 +7,8 @@ import { getCharacters } from "../../../../services/harryPotterServices";
 import { useDispatch } from "react-redux";
 import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
+import Pagination from "../../../../component/Pagination/Pagination";
+import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
 
 const Room = () => {
   const location = useLocation();
@@ -52,6 +54,7 @@ const Room = () => {
         </div>
         <img src={location.state?.image} alt={"house-logo"} />
       </div>
+      <RoomBody />
     </div>
   );
 };
