@@ -8,11 +8,15 @@ import "./assets/fontFamilies/Lato-Bold_0.ttf";
 import "./assets/fontFamilies/Lato-Light_0.ttf";
 import "./assets/fontFamilies/Lato-Regular_0.ttf";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "redux";
+import store from "./redux/store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 
