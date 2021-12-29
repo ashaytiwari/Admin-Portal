@@ -14,7 +14,7 @@ const DrawerSidebar = () => {
 
       <div className={styles.body}>
         {sidebarData.map((item, index) => (
-          <SidebarItem data={item} key={index} />
+          <SidebarItem data={item} index={index} />
         ))}
       </div>
     </div>

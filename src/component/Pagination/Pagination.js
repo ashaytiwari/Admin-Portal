@@ -12,8 +12,6 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [isPrevDisabled, setIsPrevDisabled] = useState(false);
 
-  console.log(totalPages, "TotalPages");
-
   useEffect(() => {
     setTotalPages(Math.ceil(data.length / dataLimit));
     if (currentPage === Math.ceil(data.length / dataLimit)) {
@@ -54,7 +52,6 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
   const getPaginatedData = () => {
     const startIndex = currentPage * dataLimit - dataLimit;
     const endIndex = startIndex + dataLimit;
-    console.log(startIndex, endIndex);
     return data?.slice(startIndex, endIndex);
   };
 
@@ -65,20 +62,20 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
           <RenderComponent data={item} />
         ))}
       </WrapperComponent>
-      <div className={`${styles.footer} d-flex`}>
-        <IconButton onClick={navigateToFirstPage}>
+      <div className={styles.footer}>
+        <IconButton onClick={navigateToFirstPage} className={styles.actionBtn}>
           <FirstPageIcon />
         </IconButton>
-        <IconButton onClick={navigateToPrevPage}>
+        <IconButton onClick={navigateToPrevPage} className={styles.actionBtn}>
           <KeyboardArrowLeftIcon />
         </IconButton>
-        <p>
-          {currentPage} of {totalPages}
+        <p className={styles.infoText}>
+          {currentPage} of {totalPages} Pages
         </p>
-        <IconButton onClick={navigateToNextPage}>
+        <IconButton onClick={navigateToNextPage} className={styles.actionBtn}>
           <KeyboardArrowRightIcon />
         </IconButton>
-        <IconButton onClick={navigateToLastPage}>
+        <IconButton onClick={navigateToLastPage} className={styles.actionBtn}>
           <LastPageIcon />
         </IconButton>
       </div>

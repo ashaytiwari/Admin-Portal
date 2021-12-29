@@ -7,8 +7,8 @@ import { getCharacters } from "../../../../services/harryPotterServices";
 import { useDispatch } from "react-redux";
 import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
-import Pagination from "../../../../component/Pagination/Pagination";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
+import Loader from "../../../../component/Loader/Loader";
 
 const Room = () => {
   const location = useLocation();
@@ -17,6 +17,7 @@ const Room = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const [queryType, setQueryType] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (location.state?.keys === "commonRoom") {
@@ -29,16 +30,24 @@ const Room = () => {
   useEffect(() => {
     if (queryType !== null) {
       getHPCharacters();
+
+      // Clearing redux data on component unmount
+      return () => {
+        dispatch(setHPCharacters([]));
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryType]);
 
   const getHPCharacters = () => {
+    setIsLoading(true);
     getCharacters(queryType).then((res) => {
       if (res?.status === 200) {
+        setIsLoading(false);
         dispatch(setHPCharacters(res?.data));
       } else {
         enqueueSnackbar(res?.statusText, { variant: "error" });
+        setIsLoading(false);
       }
     });
   };
@@ -54,7 +63,7 @@ const Room = () => {
         </div>
         <img src={location.state?.image} alt={"house-logo"} />
       </div>
-      <RoomBody />
+      {isLoading ? <Loader /> : <RoomBody />}
     </div>
   );
 };

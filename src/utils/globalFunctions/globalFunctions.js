@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import CryptoJs from "crypto-js";
 import config from "../../config/config.json";
 
@@ -22,4 +23,38 @@ export const getLocalStorage = () => {
 
 export const removeDataFromLocalStorage = () => {
   localStorage.removeItem("user_info");
+};
+
+export const extractAvatarCharactersFromName = (name) => {
+  let avatarString = "";
+  if (name) {
+    name
+      .split(" ")
+      .slice(0, 2)
+      .map((item) => {
+        avatarString = avatarString + item[0];
+      });
+  }
+  return avatarString;
+};
+
+export const dynamicBGColorToCardAvatar = (houseName) => {
+  switch (houseName) {
+    case "Gryffindor":
+      return "#cc3422";
+    case "Slytherin":
+      return "#3e8d20";
+    case "Hufflepuff":
+      return "#e3be29";
+    case "Ravenclaw":
+      return "#078aae";
+    default:
+      return "#ab9c86";
+  }
+};
+
+export const extractCharacterType = (isStudent, isStaff) => {
+  if (isStudent) return "Hogwarts Student";
+  else if (isStaff) return "Hogwarts Staff";
+  else return "Outsider";
 };

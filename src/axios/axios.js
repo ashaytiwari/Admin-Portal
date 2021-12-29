@@ -3,12 +3,12 @@ import axios from "axios";
 const customAxios = axios.create({});
 
 const requestHandler = (request) => {
-  console.log(request, " <<<<<<<<<<<<<<<<<<request ");
+  // console.log(request, " <<<<<<<<<<<<<<<<<<request ");
   return request;
 };
 
 const responseHandler = (response) => {
-  console.log(response, " <<<<<<<<<<<<<<<<<<response ");
+  // console.log(response, " <<<<<<<<<<<<<<<<<<response ");
   return response;
 };
 
