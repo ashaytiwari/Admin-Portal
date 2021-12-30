@@ -1,0 +1,10 @@
+.wrapper {
+  margin: 20px 0;
+
+  .cardSkeleton {
+    width: 100%;
+    height: 350px;
+    border-radius: 20px;
+    background-color: var(--skeleton);
+  }
+}

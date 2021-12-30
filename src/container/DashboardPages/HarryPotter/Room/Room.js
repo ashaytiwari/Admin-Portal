@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
-import Loader from "../../../../component/Loader/Loader";
+import HPCharactersCardSkeleton from "../../../../component/SkeletonLoaders/HPCharactersCardSkeleton/HPCharactersCardSkeleton";
 
 const Room = () => {
   const location = useLocation();
@@ -63,7 +63,7 @@ const Room = () => {
         </div>
         <img src={location.state?.image} alt={"house-logo"} />
       </div>
-      {isLoading ? <Loader /> : <RoomBody />}
+      {isLoading ? <HPCharactersCardSkeleton /> : <RoomBody />}
     </div>
   );
 };
