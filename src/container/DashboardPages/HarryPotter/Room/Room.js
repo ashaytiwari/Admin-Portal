@@ -9,6 +9,7 @@ import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
 import HPCharactersCardSkeleton from "../../../../component/SkeletonLoaders/HPCharactersCardSkeleton/HPCharactersCardSkeleton";
+import FilterSection from "../../../../component/Dashboard/HarryPotter/FilterSection/FilterSection";
 
 const Room = () => {
   const location = useLocation();
@@ -63,6 +64,11 @@ const Room = () => {
         </div>
         <img src={location.state?.image} alt={"house-logo"} />
       </div>
+      {location.state?.keys === "commonRoom" && (
+        <div className="my-4">
+          <FilterSection />
+        </div>
+      )}
       {isLoading ? <HPCharactersCardSkeleton /> : <RoomBody />}
     </div>
   );
