@@ -53,6 +53,12 @@ const Room = () => {
     });
   };
 
+  const handleFilterChange = (value) => {
+    if (value === "all") setQueryType("");
+    else if (value === "students") setQueryType(value);
+    else if (value === "staff") setQueryType(value);
+  };
+
   return (
     <div className={styles.roomWrapper}>
       <div className={styles.header}>
@@ -66,7 +72,7 @@ const Room = () => {
       </div>
       {location.state?.keys === "commonRoom" && (
         <div className="my-4">
-          <FilterSection />
+          <FilterSection onFilterChange={handleFilterChange} />
         </div>
       )}
       {isLoading ? <HPCharactersCardSkeleton /> : <RoomBody />}

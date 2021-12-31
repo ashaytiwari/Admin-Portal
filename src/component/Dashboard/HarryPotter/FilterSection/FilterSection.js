@@ -20,7 +20,7 @@ const popupData = [
   }
 ];
 
-const FilterSection = () => {
+const FilterSection = (props) => {
   const [popupAnchor, setPopupAnchor] = useState(null);
   const [filterType, setFilterType] = useState("all");
 
@@ -35,6 +35,7 @@ const FilterSection = () => {
   const handleFilterSelection = (value) => {
     setFilterType(value);
     handleClose();
+    props.onFilterChange(value);
   };
 
   const open = Boolean(popupAnchor);
@@ -44,11 +45,7 @@ const FilterSection = () => {
     <>
       <Button className={styles.filterBtn} onClick={handleOpen}>
         {filterType}
-        {open ? (
-          <ExpandLessIcon className={styles.chevronIcon} />
-        ) : (
-          <ExpandMoreIcon className={styles.chevronIcon} />
-        )}
+        {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </Button>
       <Popover
         id={popoverId}
