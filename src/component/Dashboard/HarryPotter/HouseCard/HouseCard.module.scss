@@ -1,0 +1,27 @@
+.houseCard {
+  width: fit-content;
+  margin: 20px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 30px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: -1px -1px 25px 3px rgba(0, 0, 0, 0.57);
+    -webkit-box-shadow: -1px -1px 25px 3px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: -1px -1px 25px 3px rgba(0, 0, 0, 0.57);
+  }
+
+  img {
+    width: 60%;
+    border-radius: 20px;
+  }
+
+  h6 {
+    color: var(--text);
+    font-size: 40px;
+    font-family: "Lato-Bold";
+    text-align: center;
+    margin-top: 20px;
+  }
+}

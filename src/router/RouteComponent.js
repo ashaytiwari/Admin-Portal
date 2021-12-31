@@ -6,6 +6,7 @@ import NotFound from "../container/NotFound/NotFound";
 import Dashboard from "../container/DashboardPages/Dashboard/Dashboard";
 import Hogwarts from "../container/DashboardPages/HarryPotter/Hogwarts/Hogwarts";
 import Room from "../container/DashboardPages/HarryPotter/Room/Room";
+import BreakingBadHome from "../container/DashboardPages/BreakingBad/BreakingBadHome/BreakingBadHome";
 
 const RouteComponent = () => {
   return (
@@ -30,6 +31,7 @@ const RouteComponent = () => {
           <Route path={"harryPotter"} element={<Hogwarts />}>
             <Route path={":roomName"} element={<Room />} />
           </Route>
+          <Route path={"breakingBad"} element={<BreakingBadHome />} />
         </Route>
         {/* Dashboard Routes */}
 

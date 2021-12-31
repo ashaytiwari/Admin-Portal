@@ -1,0 +1,36 @@
+.body {
+  margin-top: 20px;
+
+  h5 {
+    color: var(--text);
+    font-size: 22px;
+    font-family: "Lato-Bold";
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    .gryffindorBG {
+      background-color: #cc3422;
+    }
+
+    .slytherinBG {
+      background-color: #3e8d20;
+    }
+
+    .ravenclawBG {
+      background-color: #078aae;
+    }
+
+    .hufflepuffBG {
+      background-color: #e3be29;
+    }
+
+    .commonBg {
+      background-color: #ab9c86;
+    }
+  }
+}
