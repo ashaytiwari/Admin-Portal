@@ -58,3 +58,20 @@ export const extractCharacterType = (isStudent, isStaff) => {
   else if (isStaff) return "Hogwarts Staff";
   else return "Outsider";
 };
+
+export const translatedNameForHPHouse = (key, t) => {
+  switch (key) {
+    case "gryffindor":
+      return t("hp:gryffindor");
+    case "slytherin":
+      return t("hp:slytherin");
+    case "ravenclaw":
+      return t("hp:ravenclaw");
+    case "hufflepuff":
+      return t("hp:hufflepuff");
+    case "commonRoom":
+      return t("hp:commonRoom");
+    default:
+      return null;
+  }
+};

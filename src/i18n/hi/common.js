@@ -7,5 +7,6 @@ export default {
   hindi: "हिंदी",
   connectedToInternet: "इंटरनेट से जुड़ा है...",
   connectionLost: "इंटरनेट कनेक्शन खो गया...",
-  networkStatus: "नेटवर्क की स्थिति"
+  networkStatus: "नेटवर्क की स्थिति",
+  pages: "पृष्ठों"
 };

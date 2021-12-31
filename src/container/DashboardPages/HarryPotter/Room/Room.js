@@ -10,12 +10,15 @@ import { useSnackbar } from "notistack";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
 import HPCharactersCardSkeleton from "../../../../component/SkeletonLoaders/HPCharactersCardSkeleton/HPCharactersCardSkeleton";
 import FilterSection from "../../../../component/Dashboard/HarryPotter/FilterSection/FilterSection";
+import { useTranslation } from "react-i18next";
+import { translatedNameForHPHouse } from "../../../../utils/globalFunctions/globalFunctions";
 
 const Room = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   const [queryType, setQueryType] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +69,7 @@ const Room = () => {
           <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
             <KeyboardBackspaceIcon />
           </IconButton>
-          <h4>{location.state?.title}</h4>
+          <h4>{translatedNameForHPHouse(location.state?.keys, t)}</h4>
         </div>
         <img src={location.state?.image} alt={"house-logo"} />
       </div>

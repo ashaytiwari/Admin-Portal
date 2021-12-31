@@ -7,6 +7,7 @@ import Ravenclaw from "../../../../assets/images/harryPotter/ravenclaw.png";
 import Hufflepuff from "../../../../assets/images/harryPotter/hufflepuff.png";
 import CommonRoom from "../../../../assets/images/harryPotter/houses.jpg";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HouseCard = (props) => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const HouseCard = (props) => {
 
 const Hogwarts = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   if (location.pathname !== "/dashboard/harryPotter") {
     return <Outlet />;
@@ -35,8 +37,8 @@ const Hogwarts = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <div>
-          <h4>Hogwarts</h4>
-          <p>Hogwarts School of Witchcraft and Wizardry</p>
+          <h4>{t("hp:hogwarts")}</h4>
+          <p>{t("hp:hogwartsTitle")}</p>
         </div>
         <img src={HogwartsLogo} alt={"logo"} />
       </div>
@@ -44,13 +46,13 @@ const Hogwarts = () => {
         <div className={styles.row}>
           <HouseCard
             image={Gryffindor}
-            title={"Gryffindor"}
+            title={t("hp:gryffindor")}
             background={styles.gryffindorBG}
             keys={"gryffindor"}
           />
           <HouseCard
             image={Slytherin}
-            title={"Slytherin"}
+            title={t("hp:slytherin")}
             background={styles.slytherinBG}
             keys={"slytherin"}
           />
@@ -58,13 +60,13 @@ const Hogwarts = () => {
         <div className={styles.row}>
           <HouseCard
             image={Ravenclaw}
-            title={"Ravenclaw"}
+            title={t("hp:ravenclaw")}
             background={styles.ravenclawBG}
             keys={"ravenclaw"}
           />
           <HouseCard
             image={Hufflepuff}
-            title={"Hufflepuff"}
+            title={t("hp:hufflepuff")}
             background={styles.hufflepuffBG}
             keys={"hufflepuff"}
           />
@@ -72,7 +74,7 @@ const Hogwarts = () => {
         <div className={styles.row}>
           <HouseCard
             image={CommonRoom}
-            title={"Common Room"}
+            title={t("hp:commonRoom")}
             background={styles.commonBg}
             keys={"commonRoom"}
           />
