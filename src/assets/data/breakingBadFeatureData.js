@@ -6,7 +6,7 @@ export const breakingBadFeatureData = [
   {
     title: "Episodes",
     icon: LiveTvIcon,
-    link: ""
+    link: "/dashboard/breakingBad/episodes"
   },
   {
     title: "Characters",

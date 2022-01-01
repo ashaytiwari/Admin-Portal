@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
-import HPCharactersCardSkeleton from "../../../../component/SkeletonLoaders/HPCharactersCardSkeleton/HPCharactersCardSkeleton";
+import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/RectangularCardSkeleton/RectangularCardSkeleton";
 import FilterSection from "../../../../component/Dashboard/HarryPotter/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
 import { translatedNameForHPHouse } from "../../../../utils/globalFunctions/globalFunctions";
@@ -78,7 +78,7 @@ const Room = () => {
           <FilterSection onFilterChange={handleFilterChange} />
         </div>
       )}
-      {isLoading ? <HPCharactersCardSkeleton /> : <RoomBody />}
+      {isLoading ? <RectangularCardSkeleton /> : <RoomBody />}
     </div>
   );
 };

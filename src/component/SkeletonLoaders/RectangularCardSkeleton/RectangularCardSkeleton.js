@@ -1,8 +1,8 @@
 import React from "react";
 import { Skeleton } from "@mui/material";
-import styles from "./HPCharactersCardSkeleton.module.scss";
+import styles from "./RectangularCardSkeleton.module.scss";
 
-const HPCharactersCardSkeleton = () => {
+const RectangularCardSkeleton = () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <div className={"row"}>
@@ -19,4 +19,4 @@ const HPCharactersCardSkeleton = () => {
   );
 };
 
-export default HPCharactersCardSkeleton;
+export default RectangularCardSkeleton;
