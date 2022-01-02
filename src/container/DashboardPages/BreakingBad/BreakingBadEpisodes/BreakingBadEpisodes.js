@@ -10,6 +10,8 @@ import { setBDEpisodes } from "../../../../redux/actions/breakingBad.actions";
 import { useSnackbar } from "notistack";
 import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/RectangularCardSkeleton/RectangularCardSkeleton";
 import BreakingBadEpisodesBody from "../../../../component/Dashboard/BreakingBad/BreakingBadEpisodesBody/BreakingBadEpisodesBody";
+import { bdEpisodesFilterData } from "../../../../assets/data/bdEpisodesFilterData";
+import FilterSection from "../../../../component/FilterSection/FilterSection";
 
 const BreakingBadEpisodes = () => {
   const navigate = useNavigate();
@@ -17,9 +19,14 @@ const BreakingBadEpisodes = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [filterType, setFilterType] = useState("all");
 
   useEffect(() => {
     getBreakingBadEpisodes();
+
+    return () => {
+      dispatch(setBDEpisodes([]));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -36,6 +43,10 @@ const BreakingBadEpisodes = () => {
     });
   };
 
+  const handleFilterChange = (data) => {
+    setFilterType(data.index);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -48,7 +59,16 @@ const BreakingBadEpisodes = () => {
         <img src={BreakingLogo} alt={"house-logo"} />
       </div>
       <div className={styles.body}>
-        {isLoading ? <RectangularCardSkeleton /> : <BreakingBadEpisodesBody />}
+        <FilterSection
+          onFilterChange={handleFilterChange}
+          data={bdEpisodesFilterData}
+          initialValue={bdEpisodesFilterData[0].title}
+        />
+        {isLoading ? (
+          <RectangularCardSkeleton />
+        ) : (
+          <BreakingBadEpisodesBody filterType={filterType} />
+        )}
       </div>
     </div>
   );

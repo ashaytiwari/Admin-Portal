@@ -3,7 +3,6 @@ import styles from "./BreakingBadEpisodeCard.module.scss";
 import moment from "moment";
 
 const BreakingBadEpisodeCard = (props) => {
-  console.log(props.data);
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
@@ -32,7 +31,7 @@ const BreakingBadEpisodeCard = (props) => {
           </div>
           <div className="col-md-8">
             <p className={styles.value}>
-              {moment(props.data.air_date).format("Do MMMM YYYY")}
+              {moment(props.data.air_date).format("MMMM Do YYYY")}
             </p>
           </div>
         </div>

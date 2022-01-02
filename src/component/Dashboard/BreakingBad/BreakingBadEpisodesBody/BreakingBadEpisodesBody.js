@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./BreakingBadEpisodesBody.module.scss";
 import { useSelector } from "react-redux";
 import Pagination from "../../../Pagination/Pagination";
@@ -16,13 +16,26 @@ const RenderComponent = (props) => {
   );
 };
 
-const BreakingBadEpisodesBody = () => {
+const BreakingBadEpisodesBody = (props) => {
   const bdEpisodes = useSelector((state) => state.breakingBad.bdEpisodes);
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    if (props.filterType === "all") {
+      setFilteredData(bdEpisodes);
+    } else {
+      let array = bdEpisodes.filter((item) => {
+        return Number(item.season) === props.filterType;
+      });
+      setFilteredData(array);
+    }
+  }, [bdEpisodes, props.filterType]);
 
   return (
     <div className={styles.body}>
       <Pagination
-        data={bdEpisodes}
+        data={filteredData}
         dataLimit={12}
         WrapperComponent={WrapperComponent}
         RenderComponent={RenderComponent}

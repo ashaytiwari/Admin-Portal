@@ -9,9 +9,10 @@ import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
 import { useSnackbar } from "notistack";
 import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomBody";
 import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/RectangularCardSkeleton/RectangularCardSkeleton";
-import FilterSection from "../../../../component/Dashboard/HarryPotter/FilterSection/FilterSection";
+import FilterSection from "../../../../component/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
 import { translatedNameForHPHouse } from "../../../../utils/globalFunctions/globalFunctions";
+import { hpFilterData } from "../../../../assets/data/hpFilterData";
 
 const Room = () => {
   const location = useLocation();
@@ -56,10 +57,10 @@ const Room = () => {
     });
   };
 
-  const handleFilterChange = (value) => {
-    if (value === "all") setQueryType("");
-    else if (value === "students") setQueryType(value);
-    else if (value === "staff") setQueryType(value);
+  const handleFilterChange = (data) => {
+    if (data.value === "all") setQueryType("");
+    else if (data.value === "students") setQueryType(data.value);
+    else if (data.value === "staff") setQueryType(data.value);
   };
 
   return (
@@ -75,7 +76,11 @@ const Room = () => {
       </div>
       {location.state?.keys === "commonRoom" && (
         <div className="my-4">
-          <FilterSection onFilterChange={handleFilterChange} />
+          <FilterSection
+            onFilterChange={handleFilterChange}
+            data={hpFilterData}
+            initialValue={hpFilterData[0].title}
+          />
         </div>
       )}
       {isLoading ? <RectangularCardSkeleton /> : <RoomBody />}
