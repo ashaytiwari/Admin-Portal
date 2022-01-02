@@ -11,7 +11,7 @@ export const breakingBadFeatureData = [
   {
     title: "Characters",
     icon: GroupsRoundedIcon,
-    link: ""
+    link: "/dashboard/breakingBad/characters"
   },
   {
     title: "Quotes",

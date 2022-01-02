@@ -8,6 +8,7 @@ import Hogwarts from "../container/DashboardPages/HarryPotter/Hogwarts/Hogwarts"
 import Room from "../container/DashboardPages/HarryPotter/Room/Room";
 import BreakingBadHome from "../container/DashboardPages/BreakingBad/BreakingBadHome/BreakingBadHome";
 import BreakingBadEpisodes from "../container/DashboardPages/BreakingBad/BreakingBadEpisodes/BreakingBadEpisodes";
+import BreakingBadCharacters from "../container/DashboardPages/BreakingBad/BreakingBadCharacters/BreakingBadCharacters";
 
 const RouteComponent = () => {
   return (
@@ -34,6 +35,7 @@ const RouteComponent = () => {
           </Route>
           <Route path={"breakingBad"} element={<BreakingBadHome />}>
             <Route path={"episodes"} element={<BreakingBadEpisodes />} />
+            <Route path={"characters"} element={<BreakingBadCharacters />} />
           </Route>
         </Route>
         {/* Dashboard Routes */}

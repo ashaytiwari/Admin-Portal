@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styles from "./BreakingBadEpisodesBody.module.scss";
 import { useSelector } from "react-redux";
 import Pagination from "../../../Pagination/Pagination";
 import BreakingBadEpisodeCard from "../BreakingBadEpisodeCard/BreakingBadEpisodeCard";
@@ -33,7 +32,7 @@ const BreakingBadEpisodesBody = (props) => {
   }, [bdEpisodes, props.filterType]);
 
   return (
-    <div className={styles.body}>
+    <div>
       <Pagination
         data={filteredData}
         dataLimit={12}

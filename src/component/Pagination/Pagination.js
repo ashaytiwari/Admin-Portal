@@ -59,7 +59,7 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
     <div className={styles.wrapper}>
       <WrapperComponent>
         {getPaginatedData()?.map((item, index) => (
-          <RenderComponent data={item} />
+          <RenderComponent data={item} keys={index} />
         ))}
       </WrapperComponent>
       <div className={styles.footer}>
