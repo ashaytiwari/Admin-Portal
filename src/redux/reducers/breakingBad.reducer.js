@@ -1,10 +1,15 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import { SET_BD_CHARACTERS, SET_BD_EPISODES } from "../constants/breakingBad";
+import {
+  SET_BD_CHARACTERS,
+  SET_BD_EPISODES,
+  SET_BD_QUOTE
+} from "../constants/breakingBad";
 
 const initialState = {
   bdEpisodes: [],
-  bdCharacters: []
+  bdCharacters: [],
+  bdQuote: []
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -18,6 +23,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         bdCharacters: payload
+      };
+    case SET_BD_QUOTE:
+      return {
+        ...state,
+        bdQuote: payload
       };
     default:
       return state;

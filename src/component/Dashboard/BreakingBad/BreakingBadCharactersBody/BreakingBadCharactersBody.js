@@ -18,7 +18,6 @@ const RenderComponent = (props) => {
 const BreakingBadCharactersBody = () => {
   const bdCharacters = useSelector((state) => state.breakingBad.bdCharacters);
 
-  console.log(bdCharacters);
   return (
     <div>
       <Pagination

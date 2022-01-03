@@ -11,3 +11,9 @@ export const getBDCharacters = async () => {
   const res = await axios.get(url);
   return res;
 };
+
+export const getBDQuotes = async (id) => {
+  const url = `https://breakingbadapi.com/api/quotes/${id}`;
+  const res = await axios.get(url);
+  return res;
+};

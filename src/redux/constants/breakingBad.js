@@ -1,2 +1,3 @@
 export const SET_BD_EPISODES = "SET_BD_EPISODES";
 export const SET_BD_CHARACTERS = "SET_BD_CHARACTERS";
+export const SET_BD_QUOTE = "SET_BD_QUOTE";

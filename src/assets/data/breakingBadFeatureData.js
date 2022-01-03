@@ -16,6 +16,6 @@ export const breakingBadFeatureData = [
   {
     title: "Quotes",
     icon: FormatQuoteRoundedIcon,
-    link: ""
+    link: "/dashboard/breakingBad/quotes"
   }
 ];

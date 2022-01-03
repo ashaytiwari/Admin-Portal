@@ -75,3 +75,9 @@ export const translatedNameForHPHouse = (key, t) => {
       return null;
   }
 };
+
+export const generateRandomNumber = (min, max) => {
+  let randomNumber = Math.random();
+  let updatedNumber = Math.floor(randomNumber * (max - min + 1) + min);
+  return updatedNumber;
+};
