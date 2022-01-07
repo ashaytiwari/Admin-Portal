@@ -5,8 +5,11 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
+import { useTranslation } from "react-i18next";
 
 const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
+  const { t } = useTranslation();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
@@ -70,7 +73,10 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
           <KeyboardArrowLeftIcon />
         </IconButton>
         <p className={styles.infoText}>
-          {currentPage} of {totalPages} Pages
+          {t("common:paginationInfo", {
+            currentPage: currentPage,
+            totalPage: totalPages
+          })}
         </p>
         <IconButton onClick={navigateToNextPage} className={styles.actionBtn}>
           <KeyboardArrowRightIcon />

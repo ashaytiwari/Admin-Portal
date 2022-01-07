@@ -10,11 +10,13 @@ import { setBDCharacters } from "../../../../redux/actions/breakingBad.actions";
 import { useSnackbar } from "notistack";
 import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/RectangularCardSkeleton/RectangularCardSkeleton";
 import BreakingBadCharactersBody from "../../../../component/Dashboard/BreakingBad/BreakingBadCharactersBody/BreakingBadCharactersBody";
+import { useTranslation } from "react-i18next";
 
 const BreakingBadCharacters = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,7 +49,7 @@ const BreakingBadCharacters = () => {
           <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
             <KeyboardBackspaceIcon />
           </IconButton>
-          <h4>Characters</h4>
+          <h4>{t("breakingBad:characters")}</h4>
         </div>
         <img src={BreakingLogo} alt={"house-logo"} />
       </div>

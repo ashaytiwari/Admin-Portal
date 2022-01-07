@@ -8,5 +8,6 @@ export default {
   connectedToInternet: "Connected to internet",
   connectionLost: "Internet connection lost...",
   networkStatus: "Network Status",
-  pages: "Pages"
+  pages: "Pages",
+  paginationInfo: "{{currentPage}} of {{totalPage}} Pages"
 };

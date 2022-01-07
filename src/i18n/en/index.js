@@ -5,6 +5,7 @@ import form from "./form";
 import common from "./common";
 import formValidationMessage from "./formValidationMessage";
 import hp from "./hp";
+import breakingBad from "./breakingBad";
 
 export default {
   actions,
@@ -12,5 +13,6 @@ export default {
   form,
   common,
   formValidationMessage,
-  hp
+  hp,
+  breakingBad
 };

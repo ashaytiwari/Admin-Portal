@@ -12,11 +12,13 @@ import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/Recta
 import BreakingBadEpisodesBody from "../../../../component/Dashboard/BreakingBad/BreakingBadEpisodesBody/BreakingBadEpisodesBody";
 import { bdEpisodesFilterData } from "../../../../assets/data/bdEpisodesFilterData";
 import FilterSection from "../../../../component/FilterSection/FilterSection";
+import { useTranslation } from "react-i18next";
 
 const BreakingBadEpisodes = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
   const [filterType, setFilterType] = useState("all");
@@ -54,7 +56,7 @@ const BreakingBadEpisodes = () => {
           <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
             <KeyboardBackspaceIcon />
           </IconButton>
-          <h4>Episodes</h4>
+          <h4>{t("breakingBad:episodes")}</h4>
         </div>
         <img src={BreakingLogo} alt={"house-logo"} />
       </div>

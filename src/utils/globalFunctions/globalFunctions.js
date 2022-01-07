@@ -81,3 +81,16 @@ export const generateRandomNumber = (min, max) => {
   let updatedNumber = Math.floor(randomNumber * (max - min + 1) + min);
   return updatedNumber;
 };
+
+export const translateFeatureNameForBD = (key, t) => {
+  switch (key) {
+    case "Episodes":
+      return t("breakingBad:episodes");
+    case "Characters":
+      return t("breakingBad:characters");
+    case "Quotes":
+      return t("breakingBad:quotes");
+    default:
+      return null;
+  }
+};

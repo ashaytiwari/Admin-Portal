@@ -11,11 +11,13 @@ import { useDispatch } from "react-redux";
 import { setBDQuote } from "../../../../redux/actions/breakingBad.actions";
 import { useSnackbar } from "notistack";
 import QuoteCard from "../../../../component/Dashboard/BreakingBad/QuoteCard/QuoteCard";
+import { useTranslation } from "react-i18next";
 
 const BreakingBadQuotes = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,13 +51,13 @@ const BreakingBadQuotes = () => {
           <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
             <KeyboardBackspaceIcon />
           </IconButton>
-          <h4>Breaking Bad Famous Quotes</h4>
+          <h4>{t("breakingBad:breakingBadQuotes")}</h4>
         </div>
         <img src={BreakingLogo} alt={"house-logo"} />
       </div>
       <div className={styles.body}>
         <Button className={styles.btn} onClick={getRandomQuote}>
-          Re-generate Quote
+          {t("breakingBad:regenerateQuote")}
         </Button>
         <QuoteCard isLoading={isLoading} />
       </div>

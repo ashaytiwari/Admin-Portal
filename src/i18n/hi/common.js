@@ -8,5 +8,6 @@ export default {
   connectedToInternet: "इंटरनेट से जुड़ा है...",
   connectionLost: "इंटरनेट कनेक्शन खो गया...",
   networkStatus: "नेटवर्क की स्थिति",
-  pages: "पृष्ठों"
+  pages: "पृष्ठों",
+  paginationInfo: "{{totalPage}} में से {{currentPage}} पृष्ठ"
 };
