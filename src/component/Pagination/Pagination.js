@@ -6,14 +6,26 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { handleResetPagination } from "../../redux/actions/ui.actions";
 
 const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [isPrevDisabled, setIsPrevDisabled] = useState(false);
+
+  const resetPagination = useSelector((state) => state.ui.resetPagination);
+
+  useEffect(() => {
+    if (resetPagination) {
+      setCurrentPage(1);
+      dispatch(handleResetPagination(false));
+    }
+  }, [resetPagination, dispatch]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(data.length / dataLimit));

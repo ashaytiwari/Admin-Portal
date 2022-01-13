@@ -13,6 +13,7 @@ import BreakingBadEpisodesBody from "../../../../component/Dashboard/BreakingBad
 import { bdEpisodesFilterData } from "../../../../assets/data/bdEpisodesFilterData";
 import FilterSection from "../../../../component/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
+import { handleResetPagination } from "../../../../redux/actions/ui.actions";
 
 const BreakingBadEpisodes = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const BreakingBadEpisodes = () => {
 
     return () => {
       dispatch(setBDEpisodes([]));
+      dispatch(handleResetPagination(false));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -46,6 +48,7 @@ const BreakingBadEpisodes = () => {
   };
 
   const handleFilterChange = (data) => {
+    dispatch(handleResetPagination(true));
     setFilterType(data.index);
   };
 
