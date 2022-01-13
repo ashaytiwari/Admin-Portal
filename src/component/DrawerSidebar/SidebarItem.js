@@ -8,9 +8,9 @@ const SidebarItem = ({ data, index }) => {
 
   return (
     <div
-      className={`${location.pathname === data.link && styles.activeItem} ${
-        styles.sidebarItem
-      }`}
+      className={`${
+        location.pathname.includes(data.link) && styles.activeItem
+      } ${styles.sidebarItem}`}
       key={index}
       onClick={() => navigate(data.link)}
     >
