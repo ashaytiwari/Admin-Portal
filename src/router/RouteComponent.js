@@ -2,15 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./routes";
 import Loader from "../component/Loader/Loader";
-import NotFound from "../container/NotFound/NotFound";
-import Dashboard from "../container/DashboardPages/Dashboard/Dashboard";
-import Hogwarts from "../container/DashboardPages/HarryPotter/Hogwarts/Hogwarts";
-import Room from "../container/DashboardPages/HarryPotter/Room/Room";
-import BreakingBadHome from "../container/DashboardPages/BreakingBad/BreakingBadHome/BreakingBadHome";
-import BreakingBadEpisodes from "../container/DashboardPages/BreakingBad/BreakingBadEpisodes/BreakingBadEpisodes";
-import BreakingBadCharacters from "../container/DashboardPages/BreakingBad/BreakingBadCharacters/BreakingBadCharacters";
-import BreakingBadQuotes from "../container/DashboardPages/BreakingBad/BreakingBadQuotes/BreakingBadQuotes";
-import LuciferQuotes from "../container/DashboardPages/LuciferQuotes/LuciferQuotes";
+import NotFound from "../pages/NotFound/NotFound";
+import Dashboard from "../pages/DashboardPages/Dashboard/Dashboard";
+import Hogwarts from "../pages/DashboardPages/HarryPotter/Hogwarts/Hogwarts";
+import Room from "../pages/DashboardPages/HarryPotter/Room/Room";
+import BreakingBadHome from "../pages/DashboardPages/BreakingBad/BreakingBadHome/BreakingBadHome";
+import BreakingBadEpisodes from "../pages/DashboardPages/BreakingBad/BreakingBadEpisodes/BreakingBadEpisodes";
+import BreakingBadCharacters from "../pages/DashboardPages/BreakingBad/BreakingBadCharacters/BreakingBadCharacters";
+import BreakingBadQuotes from "../pages/DashboardPages/BreakingBad/BreakingBadQuotes/BreakingBadQuotes";
+import LuciferQuotes from "../pages/DashboardPages/LuciferQuotes/LuciferQuotes";
 
 const RouteComponent = () => {
   return (

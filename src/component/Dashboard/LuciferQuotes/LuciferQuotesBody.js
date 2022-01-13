@@ -11,8 +11,6 @@ const LuciferQuotesBody = (props) => {
 
   const quote = useSelector((state) => state.luciferQuotes.luciferQuotes[0]);
 
-  console.log(quote);
-
   return (
     <div className={styles.luciferBody}>
       <Button className={styles.btn} onClick={props.regenrateQuote}>

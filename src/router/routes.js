@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-import ErrorPage from "../container/ErrorPage/ErrorPage";
-import ForgotPassword from "../container/LandingPages/ForgotPassword/ForgotPassword";
-import ResetPassword from "../container/LandingPages/ResetPassword/ResetPassword";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ForgotPassword from "../pages/LandingPages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../pages/LandingPages/ResetPassword/ResetPassword";
 
-const Login = React.lazy(() => import("../container/LandingPages/Login/Login"));
+const Login = React.lazy(() => import("../pages/LandingPages/Login/Login"));
 const Registration = React.lazy(() =>
-  import("../container/LandingPages/Registration/Registration")
+  import("../pages/LandingPages/Registration/Registration")
 );
 
 const routes = [
