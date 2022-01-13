@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BreakingBadEpisodes.module.scss";
-import { IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import BreakingLogo from "../../../../assets/images/breakingBad/breaking.png";
 import { useDispatch } from "react-redux";
 import { getBDEpisodes } from "../../../../services/breakingBadServices";
@@ -14,9 +11,9 @@ import { bdEpisodesFilterData } from "../../../../assets/data/bdEpisodesFilterDa
 import FilterSection from "../../../../component/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
 import { handleResetPagination } from "../../../../redux/actions/ui.actions";
+import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
 
 const BreakingBadEpisodes = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
@@ -54,15 +51,10 @@ const BreakingBadEpisodes = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div>
-          <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-          <h4>{t("breakingBad:episodes")}</h4>
-        </div>
-        <img src={BreakingLogo} alt={"house-logo"} />
-      </div>
+      <BackNavigationSubHeader
+        title={t("breakingBad:episodes")}
+        src={BreakingLogo}
+      />
       <div className={styles.body}>
         <FilterSection
           onFilterChange={handleFilterChange}

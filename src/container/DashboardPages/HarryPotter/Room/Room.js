@@ -1,8 +1,5 @@
-import { IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import styles from "./Room.module.scss";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getCharacters } from "../../../../services/harryPotterServices";
 import { useDispatch } from "react-redux";
 import { setHPCharacters } from "../../../../redux/actions/harryPotter.actions";
@@ -13,10 +10,10 @@ import FilterSection from "../../../../component/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
 import { translatedNameForHPHouse } from "../../../../utils/globalFunctions/globalFunctions";
 import { hpFilterData } from "../../../../assets/data/hpFilterData";
+import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
 
 const Room = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
@@ -64,16 +61,11 @@ const Room = () => {
   };
 
   return (
-    <div className={styles.roomWrapper}>
-      <div className={styles.header}>
-        <div>
-          <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-          <h4>{translatedNameForHPHouse(location.state?.keys, t)}</h4>
-        </div>
-        <img src={location.state?.image} alt={"house-logo"} />
-      </div>
+    <div>
+      <BackNavigationSubHeader
+        title={translatedNameForHPHouse(location.state?.keys, t)}
+        src={location.state?.image}
+      />
       {location.state?.keys === "commonRoom" && (
         <div className="my-4">
           <FilterSection

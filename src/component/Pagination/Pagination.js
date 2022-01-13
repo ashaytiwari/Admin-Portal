@@ -20,6 +20,7 @@ const Pagination = ({ data, dataLimit, RenderComponent, WrapperComponent }) => {
 
   const resetPagination = useSelector((state) => state.ui.resetPagination);
 
+  // useEffect to reset current page to 1 if filter get changed
   useEffect(() => {
     if (resetPagination) {
       setCurrentPage(1);

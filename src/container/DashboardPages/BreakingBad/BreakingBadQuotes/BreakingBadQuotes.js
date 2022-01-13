@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BreakingBadQuotes.module.scss";
-import { IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import BreakingLogo from "../../../../assets/images/breakingBad/breaking.png";
 import { generateRandomNumber } from "../../../../utils/globalFunctions/globalFunctions";
 import { getBDQuotes } from "../../../../services/breakingBadServices";
@@ -12,9 +9,9 @@ import { setBDQuote } from "../../../../redux/actions/breakingBad.actions";
 import { useSnackbar } from "notistack";
 import QuoteCard from "../../../../component/Dashboard/BreakingBad/QuoteCard/QuoteCard";
 import { useTranslation } from "react-i18next";
+import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
 
 const BreakingBadQuotes = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
@@ -46,15 +43,10 @@ const BreakingBadQuotes = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div>
-          <IconButton className={styles.backBtn} onClick={() => navigate(-1)}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-          <h4>{t("breakingBad:breakingBadQuotes")}</h4>
-        </div>
-        <img src={BreakingLogo} alt={"house-logo"} />
-      </div>
+      <BackNavigationSubHeader
+        title={t("breakingBad:breakingBadQuotes")}
+        src={BreakingLogo}
+      />
       <div className={styles.body}>
         <Button className={styles.btn} onClick={getRandomQuote}>
           {t("breakingBad:regenerateQuote")}
