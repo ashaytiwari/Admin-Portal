@@ -9,5 +9,6 @@ export default {
   connectionLost: "Internet connection lost...",
   networkStatus: "Network Status",
   pages: "Pages",
-  paginationInfo: "{{currentPage}} of {{totalPage}} Pages"
+  paginationInfo: "{{currentPage}} of {{totalPage}} Pages",
+  luciferQuote: "Lucifer Quotes"
 };

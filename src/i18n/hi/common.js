@@ -9,5 +9,6 @@ export default {
   connectionLost: "इंटरनेट कनेक्शन खो गया...",
   networkStatus: "नेटवर्क की स्थिति",
   pages: "पृष्ठों",
-  paginationInfo: "{{totalPage}} में से {{currentPage}} पृष्ठ"
+  paginationInfo: "{{totalPage}} में से {{currentPage}} पृष्ठ",
+  luciferQuote: "लूसिफ़ेर के उल्लेख"
 };

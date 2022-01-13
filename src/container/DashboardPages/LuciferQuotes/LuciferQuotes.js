@@ -6,10 +6,12 @@ import { getLuciferQuotes } from "../../../services/luciferServices";
 import { useDispatch } from "react-redux";
 import { setLuciferQuotes } from "../../../redux/actions/luciferQuotes.actions";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 
 const LuciferQuotes = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,7 +35,7 @@ const LuciferQuotes = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h4>Lucifer Quotes</h4>
+        <h4>{t("common:luciferQuote")}</h4>
         <img src={LuciferLogo} alt={"lucifer-logo"} />
       </div>
       <LuciferQuotesBody
