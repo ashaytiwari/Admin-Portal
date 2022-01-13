@@ -1,0 +1,1 @@
+export const SET_LUCIFER_QUOTES = "SET_LUCIFER_QUOTES";

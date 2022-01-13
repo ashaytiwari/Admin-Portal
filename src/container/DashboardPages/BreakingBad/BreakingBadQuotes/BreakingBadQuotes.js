@@ -4,12 +4,13 @@ import BreakingLogo from "../../../../assets/images/breakingBad/breaking.png";
 import { generateRandomNumber } from "../../../../utils/globalFunctions/globalFunctions";
 import { getBDQuotes } from "../../../../services/breakingBadServices";
 import Button from "../../../../component/UI/Button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setBDQuote } from "../../../../redux/actions/breakingBad.actions";
 import { useSnackbar } from "notistack";
-import QuoteCard from "../../../../component/Dashboard/BreakingBad/QuoteCard/QuoteCard";
+import QuoteCard from "../../../../component/QuoteCard/QuoteCard";
 import { useTranslation } from "react-i18next";
 import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
+import QuoteBG from "../../../../assets/images/bg/landscapeBG.jpg";
 
 const BreakingBadQuotes = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const BreakingBadQuotes = () => {
   const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const quote = useSelector((state) => state.breakingBad.bdQuote[0]);
 
   useEffect(() => {
     getRandomQuote();
@@ -51,7 +54,12 @@ const BreakingBadQuotes = () => {
         <Button className={styles.btn} onClick={getRandomQuote}>
           {t("breakingBad:regenerateQuote")}
         </Button>
-        <QuoteCard isLoading={isLoading} />
+        <QuoteCard
+          isLoading={isLoading}
+          quote={quote?.quote}
+          author={quote?.author}
+          backgroundSrc={QuoteBG}
+        />
       </div>
     </div>
   );
