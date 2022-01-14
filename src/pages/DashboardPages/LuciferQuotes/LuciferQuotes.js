@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import styles from "./LuciferQuotes.module.scss";
 import LuciferLogo from "../../../assets/images/lucifer/luciferLogo.png";
 import LuciferQuotesBody from "../../../component/Dashboard/LuciferQuotes/LuciferQuotesBody";
-import { getLuciferQuotes } from "../../../services/luciferServices";
+import { getLuciferQuotes } from "../../../services/commonServices";
 import { useDispatch } from "react-redux";
-import { setLuciferQuotes } from "../../../redux/actions/luciferQuotes.actions";
+import { setLuciferQuotes } from "../../../redux/actions/common.actions";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 

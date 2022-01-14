@@ -11,6 +11,7 @@ import BreakingBadEpisodes from "../pages/DashboardPages/BreakingBad/BreakingBad
 import BreakingBadCharacters from "../pages/DashboardPages/BreakingBad/BreakingBadCharacters/BreakingBadCharacters";
 import BreakingBadQuotes from "../pages/DashboardPages/BreakingBad/BreakingBadQuotes/BreakingBadQuotes";
 import LuciferQuotes from "../pages/DashboardPages/LuciferQuotes/LuciferQuotes";
+import Testimonials from "../pages/DashboardPages/Testimonials/Testimonials";
 
 const RouteComponent = () => {
   return (
@@ -41,6 +42,7 @@ const RouteComponent = () => {
             <Route path={"quotes"} element={<BreakingBadQuotes />} />
           </Route>
           <Route path={"luciferQuotes"} element={<LuciferQuotes />} />
+          <Route path={"testimonials"} element={<Testimonials />} />
         </Route>
         {/* Dashboard Routes */}
 

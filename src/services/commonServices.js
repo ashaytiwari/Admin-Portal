@@ -5,3 +5,9 @@ export const getLuciferQuotes = async (query) => {
   const res = await axios.get(url);
   return res;
 };
+
+export const getTestimonialData = async (query) => {
+  const url = `https://testimonialapi.toolcarton.com/api`;
+  const res = await axios.get(url);
+  return res;
+};

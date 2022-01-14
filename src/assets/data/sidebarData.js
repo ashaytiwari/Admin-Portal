@@ -1,6 +1,7 @@
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
+import StarsIcon from "@mui/icons-material/Stars";
 
 export const sidebarData = [
   {
@@ -17,5 +18,10 @@ export const sidebarData = [
     icon: <AcUnitIcon />,
     name: "Lucifer Quotes",
     link: "/dashboard/luciferQuotes"
+  },
+  {
+    icon: <StarsIcon />,
+    name: "Testimonials",
+    link: "/dashboard/testimonials"
   }
 ];

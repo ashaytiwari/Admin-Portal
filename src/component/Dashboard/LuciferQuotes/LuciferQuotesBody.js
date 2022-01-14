@@ -9,7 +9,7 @@ import QuoteCard from "../../QuoteCard/QuoteCard";
 const LuciferQuotesBody = (props) => {
   const { t } = useTranslation();
 
-  const quote = useSelector((state) => state.luciferQuotes.luciferQuotes[0]);
+  const quote = useSelector((state) => state.common.luciferQuotes[0]);
 
   return (
     <div className={styles.luciferBody}>
