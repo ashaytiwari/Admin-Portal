@@ -82,7 +82,6 @@ const Dashboard = (props) => {
               boxSizing: "border-box",
               width: drawerWidth,
               borderRight: "1px solid #707070"
-              // backgroundColor: colorTheme === "dark" ? "#212b36" : "#fff"
             }
           }}
         >

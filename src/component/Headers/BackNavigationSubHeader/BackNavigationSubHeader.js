@@ -10,6 +10,7 @@ const BackNavigationSubHeader = (props) => {
   const handleBackNavigation = () => {
     navigate(-1);
   };
+
   return (
     <div className={styles.header}>
       <div>

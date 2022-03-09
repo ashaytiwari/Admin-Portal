@@ -1,19 +1,22 @@
-import { useSnackbar } from "notistack";
 import React, { useState, useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import SliderComponent from "../../../component/UI/Slider/Slider";
+
+import { useDispatch } from "react-redux";
+
+import { useSnackbar } from "notistack";
+
 import { getTestimonialData } from "../../../services/commonServices";
 import { setTestimonialData } from "../../../redux/actions/common.actions";
+
+import TestimonialsContainer from "../../../component/Dashboard/Testimonials/TestimonialsContainer/TestimonialsContainer";
+import Loader from "../../../component/Loader/Loader";
+
 import styles from "./Testimonials.module.scss";
-import TestimonialsCard from "../../../component/Dashboard/Testimonials/TestimonialsCard/TestimonialsCard";
 
 const Testimonials = () => {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const testimonialData = useSelector((state) => state.common.testimonialData);
 
   const getTestimonials = useCallback(() => {
     setIsLoading(true);
@@ -36,6 +39,10 @@ const Testimonials = () => {
     };
   }, [dispatch, getTestimonials]);
 
+  if (isLoading === true) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.container}>
       <div className={"text-center"}>
@@ -45,11 +52,7 @@ const Testimonials = () => {
         </p>
       </div>
       <div className={styles.body}>
-        <SliderComponent>
-          {testimonialData.map((item) => (
-            <TestimonialsCard />
-          ))}
-        </SliderComponent>
+        <TestimonialsContainer />
       </div>
     </div>
   );
