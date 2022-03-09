@@ -8,7 +8,7 @@ import RoomBody from "../../../../component/Dashboard/HarryPotter/RoomBody/RoomB
 import RectangularCardSkeleton from "../../../../component/SkeletonLoaders/RectangularCardSkeleton/RectangularCardSkeleton";
 import FilterSection from "../../../../component/FilterSection/FilterSection";
 import { useTranslation } from "react-i18next";
-import { translatedNameForHPHouse } from "../../../../utils/globalFunctions/globalFunctions";
+import { translatedNameForHPHouse } from "../../../../utilities/globalFunctions/globalFunctions";
 import { hpFilterData } from "../../../../assets/data/hpFilterData";
 import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
 

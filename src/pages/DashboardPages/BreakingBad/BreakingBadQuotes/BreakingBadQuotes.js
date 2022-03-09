@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BreakingBadQuotes.module.scss";
 import BreakingLogo from "../../../../assets/images/breakingBad/breaking.png";
-import { generateRandomNumber } from "../../../../utils/globalFunctions/globalFunctions";
+import { generateRandomNumber } from "../../../../utilities/globalFunctions/globalFunctions";
 import { getBDQuotes } from "../../../../services/breakingBadServices";
 import Button from "../../../../component/UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";

@@ -16,9 +16,11 @@ function TestimonialCard(props) {
 
   const profilePictureDescription = `${testimonial?.name} Profile Picture`;
 
+  console.log(testimonial?.rating)
+
   const ratingProperties = {
     name: 'read-only',
-    value: testimonial?.rating,
+    value: testimonial?.rating || 4,
     readOnly: true,
     sx: {
       "& .MuiRating-iconEmpty": {

@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { breakingBadFeatureData } from "../../../../assets/data/breakingBadFeatureData";
-import { translateFeatureNameForBD } from "../../../../utils/globalFunctions/globalFunctions";
+import { translateFeatureNameForBD } from "../../../../utilities/globalFunctions/globalFunctions";
 import styles from "./BreakingBadFeature.module.scss";
 
 const BreakingBadFeature = () => {

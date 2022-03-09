@@ -3,7 +3,7 @@ import {
   dynamicBGColorToCardAvatar,
   extractAvatarCharactersFromName,
   extractCharacterType
-} from "../../../../utils/globalFunctions/globalFunctions";
+} from "../../../../utilities/globalFunctions/globalFunctions";
 import styles from "./CharacterCard.module.scss";
 
 const CharacterCard = (props) => {

@@ -7,7 +7,7 @@ import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useTranslation } from "react-i18next";
 import { loginService } from "../../../services/authServices";
-import { emailValidation } from "../../../utils/formValidations/formValidations";
+import { emailValidation } from "../../../utilities/formValidations/formValidations";
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
@@ -15,7 +15,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import {
   getLocalStorage,
   setLocalStorage
-} from "../../../utils/globalFunctions/globalFunctions";
+} from "../../../utilities/globalFunctions/globalFunctions";
 
 const Login = () => {
   const { t } = useTranslation();

@@ -12,14 +12,14 @@ import {
   emailValidation,
   validateMobileNumber,
   validatePassword
-} from "../../../utils/formValidations/formValidations";
+} from "../../../utilities/formValidations/formValidations";
 import { registrationService } from "../../../services/authServices";
 import Loader from "../../../component/Loader/Loader";
 import { useSnackbar } from "notistack";
 import {
   getLocalStorage,
   setLocalStorage
-} from "../../../utils/globalFunctions/globalFunctions";
+} from "../../../utilities/globalFunctions/globalFunctions";
 
 const Registration = () => {
   const navigate = useNavigate();

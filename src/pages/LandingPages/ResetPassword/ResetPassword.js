@@ -6,12 +6,12 @@ import PasswordField from "../../../component/UI/PasswordField/PasswordField";
 import Button from "../../../component/UI/Button/Button";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import { validatePassword } from "../../../utils/formValidations/formValidations";
+import { validatePassword } from "../../../utilities/formValidations/formValidations";
 import { resetPassword } from "../../../services/authServices";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../component/Loader/Loader";
-import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
+import { getLocalStorage } from "../../../utilities/globalFunctions/globalFunctions";
 
 const ResetPassword = () => {
   const params = useParams();

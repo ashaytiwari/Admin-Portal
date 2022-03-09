@@ -6,11 +6,11 @@ import Button from "../../../component/UI/Button/Button";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
-import { emailValidation } from "../../../utils/formValidations/formValidations";
+import { emailValidation } from "../../../utilities/formValidations/formValidations";
 import { forgotPassword } from "../../../services/authServices";
 import { useSnackbar } from "notistack";
 import Loader from "../../../component/Loader/Loader";
-import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
+import { getLocalStorage } from "../../../utilities/globalFunctions/globalFunctions";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

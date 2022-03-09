@@ -10,7 +10,7 @@ import styles from "./Dashboard.module.scss";
 import DrawerSidebar from "../../../component/DrawerSidebar/DrawerSidebar";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Home from "../Home/Home";
-import { getLocalStorage } from "../../../utils/globalFunctions/globalFunctions";
+import { getLocalStorage } from "../../../utilities/globalFunctions/globalFunctions";
 
 const drawerWidth = 280;
 
