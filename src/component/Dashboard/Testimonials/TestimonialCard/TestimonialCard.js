@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { IconButton, Rating, Tooltip } from '@mui/material';
 
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
@@ -12,6 +14,8 @@ function TestimonialCard(props) {
 
   const { testimonial } = props;
   const testimonialAudio = testimonial?.audio;
+
+  const { t } = useTranslation();
 
   const [audioPlaying, setAudioPlaying] = useState(false);
 
@@ -66,8 +70,6 @@ function TestimonialCard(props) {
 
   }
 
-  console.log(audio);
-
   const profilePictureAttributes = {
     src: testimonial?.avatar,
     className: styles.profilePicture
@@ -91,10 +93,10 @@ function TestimonialCard(props) {
     onClick: handleAudioControlClick
   };
 
-  let audioToggleControlTooltip = 'Play audio';
+  let audioToggleControlTooltip = t("common:playAudio");
 
   if (audioPlaying === true) {
-    audioToggleControlTooltip = 'Pause audio';
+    audioToggleControlTooltip = t("common:pauseAudio");
   }
 
 

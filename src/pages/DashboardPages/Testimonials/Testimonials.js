@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 
 import { getTestimonialData } from "../../../services/commonServices";
 import { setTestimonialData } from "../../../redux/actions/common.actions";
@@ -15,6 +16,7 @@ import styles from "./Testimonials.module.scss";
 const Testimonials = () => {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,10 +48,8 @@ const Testimonials = () => {
   return (
     <div className={styles.container}>
       <div className={"text-center"}>
-        <h4>What Our Client Says</h4>
-        <p>
-          Our clients send us bunch of smiles with our services and we love them
-        </p>
+        <h4>{t("common:testimonialHeading")}</h4>
+        <p>{t("common:testimonialSubtext")}</p>
       </div>
       <div className={styles.body}>
         <TestimonialsContainer />
