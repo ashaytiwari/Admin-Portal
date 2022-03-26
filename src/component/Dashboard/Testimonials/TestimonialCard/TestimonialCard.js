@@ -1,13 +1,72 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Rating } from '@mui/material';
+import { IconButton, Rating, Tooltip } from '@mui/material';
+
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 import styles from './TestimonialCard.module.scss';
 
 function TestimonialCard(props) {
 
   const { testimonial } = props;
+  const testimonialAudio = testimonial?.audio;
+
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
+  const [audio, setAudio] = useState(null);
+
+  useEffect(() => {
+
+    if (audio === null) {
+      return;
+    }
+
+    audio.addEventListener('ended', () => pauseAudio());
+
+    return () => {
+      audio.removeEventListener('ended', () => pauseAudio());
+      pauseAudio();
+    }
+
+  }, [audio]);
+
+  useEffect(() => {
+
+    if (testimonialAudio) {
+      setAudio(new Audio(testimonialAudio));
+    }
+
+    setAudioPlaying(false);
+
+  }, [testimonialAudio]);
+
+  const handleAudioControlClick = () => {
+
+    if (audioPlaying === true) {
+      pauseAudio();
+    } else {
+      playAudio();
+    }
+
+  }
+
+  const playAudio = () => {
+
+    audio.play();
+    setAudioPlaying(true);
+
+  }
+
+  const pauseAudio = () => {
+
+    audio.pause();
+    setAudioPlaying(false);
+
+  }
+
+  console.log(audio);
 
   const profilePictureAttributes = {
     src: testimonial?.avatar,
@@ -15,8 +74,6 @@ function TestimonialCard(props) {
   };
 
   const profilePictureDescription = `${testimonial?.name} Profile Picture`;
-
-  console.log(testimonial?.rating)
 
   const ratingProperties = {
     name: 'read-only',
@@ -28,6 +85,18 @@ function TestimonialCard(props) {
       }
     }
   };
+
+  const audioToggleControlProperties = {
+    className: styles.audioToggleControl,
+    onClick: handleAudioControlClick
+  };
+
+  let audioToggleControlTooltip = 'Play audio';
+
+  if (audioPlaying === true) {
+    audioToggleControlTooltip = 'Pause audio';
+  }
+
 
   return (
     <div className={styles.testimonialCardContainer}>
@@ -47,6 +116,14 @@ function TestimonialCard(props) {
       <div className={styles.authorMessageWrapper}>
         <FormatQuoteIcon className={styles.quoteIcon} />
         <p className={styles.authorMessage}>{testimonial?.message}</p>
+      </div>
+
+      <div className={styles.audioControlWrapper}>
+        <Tooltip title={audioToggleControlTooltip}>
+          <IconButton {...audioToggleControlProperties}>
+            {audioPlaying === true ? <PauseIcon /> : <PlayArrowIcon />}
+          </IconButton>
+        </Tooltip>
       </div>
 
     </div>

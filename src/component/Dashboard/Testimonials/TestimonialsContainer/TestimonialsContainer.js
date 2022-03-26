@@ -58,9 +58,13 @@ function TestimonialsContainer() {
     testimonial: testimonials[selectedIndex]
   };
 
+  const testimonialControlsContainerAttributes = {
+    className: `col-md-2 text-center ${styles.testimonialControlsContainer}`
+  };
+
   return (
     <div className="row">
-      <div className="col-md-2 text-center">
+      <div {...testimonialControlsContainerAttributes}>
         <IconButton {...testimonialPreviousControlAttributes}>
           <ArrowBackIosNewIcon />
         </IconButton>
@@ -68,7 +72,7 @@ function TestimonialsContainer() {
       <div className="col-md-8">
         <TestimonialCard {...testimonialCardProperties} />
       </div>
-      <div className="col-md-2 text-center">
+      <div {...testimonialControlsContainerAttributes}>
         <IconButton {...testimonialNextControlAttributes}>
           <ArrowForwardIosIcon />
         </IconButton>
