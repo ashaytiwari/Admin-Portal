@@ -5,8 +5,6 @@ import NoblePrizeLogo from '../../../../assets/images/noblePrize/nobelPrizeLogo.
 import AboutAlfredNobel from '../../../../component/Dashboard/NoblePrizes/AboutAlfredNobel/AboutAlfredNobel';
 import BackNavigationSubHeader from "../../../../component/Headers/BackNavigationSubHeader/BackNavigationSubHeader";
 
-import styles from './AlfredNobel.module.scss';
-
 const AlfredNobel = () => {
 
   const backNavigationSubHeaderProperties = {
@@ -15,7 +13,7 @@ const AlfredNobel = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
 
       <BackNavigationSubHeader {...backNavigationSubHeaderProperties} />
 
