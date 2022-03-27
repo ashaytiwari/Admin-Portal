@@ -2,6 +2,7 @@ import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import StarsIcon from "@mui/icons-material/Stars";
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 
 export const sidebarData = [
   {
@@ -23,5 +24,10 @@ export const sidebarData = [
     icon: <StarsIcon />,
     name: "Testimonials",
     link: "/dashboard/testimonials"
+  },
+  {
+    icon: <EmojiEventsOutlinedIcon />,
+    name: 'Nobel Prizes',
+    link: "/dashboard/nobelPrizes"
   }
 ];

@@ -12,6 +12,7 @@ import BreakingBadCharacters from "../pages/DashboardPages/BreakingBad/BreakingB
 import BreakingBadQuotes from "../pages/DashboardPages/BreakingBad/BreakingBadQuotes/BreakingBadQuotes";
 import LuciferQuotes from "../pages/DashboardPages/LuciferQuotes/LuciferQuotes";
 import Testimonials from "../pages/DashboardPages/Testimonials/Testimonials";
+import NobelPrizesHome from "../pages/DashboardPages/NobelPrizes/NobelPrizesHome/NobelPrizesHome";
 
 const RouteComponent = () => {
   return (
@@ -43,6 +44,7 @@ const RouteComponent = () => {
           </Route>
           <Route path={"luciferQuotes"} element={<LuciferQuotes />} />
           <Route path={"testimonials"} element={<Testimonials />} />
+          <Route path={"nobelPrizes"} element={<NobelPrizesHome />} />
         </Route>
         {/* Dashboard Routes */}
 
