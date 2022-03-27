@@ -13,6 +13,7 @@ const BreakingBadHome = () => {
   if (location.pathname !== "/dashboard/breakingBad") {
     return <Outlet />;
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>

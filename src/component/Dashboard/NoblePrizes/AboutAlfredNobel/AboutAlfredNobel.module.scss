@@ -1,0 +1,26 @@
+.container {
+
+  .alfredImage {
+    width: 40%;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  p {
+    color: var(--grey);
+    font-size: 18px;
+    font-family: "Lato-Regular";
+  }
+
+  .findOutMoreControl {
+    color: var(--text);
+    font-size: 18px;
+    font-family: "Lato-Regular";
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

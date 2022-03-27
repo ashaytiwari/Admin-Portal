@@ -5,11 +5,11 @@ export const nobelPrizeFeaturesData = [
   {
     title: "Benefactor",
     icon: PersonIcon,
-    link: "/dashboard/noblePrizes/alfred-nobel"
+    link: "/dashboard/nobelPrizes/alfred-nobel"
   },
   {
     title: "History",
     icon: RestoreIcon,
-    link: "/dashboard/noblePrizes/:id"
+    link: "/dashboard/nobelPrizes/:id"
   }
 ];

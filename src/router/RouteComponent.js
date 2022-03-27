@@ -1,7 +1,11 @@
 import React from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import routes from "./routes";
+
 import Loader from "../component/Loader/Loader";
+
 import NotFound from "../pages/NotFound/NotFound";
 import Dashboard from "../pages/DashboardPages/Dashboard/Dashboard";
 import Hogwarts from "../pages/DashboardPages/HarryPotter/Hogwarts/Hogwarts";
@@ -13,6 +17,7 @@ import BreakingBadQuotes from "../pages/DashboardPages/BreakingBad/BreakingBadQu
 import LuciferQuotes from "../pages/DashboardPages/LuciferQuotes/LuciferQuotes";
 import Testimonials from "../pages/DashboardPages/Testimonials/Testimonials";
 import NobelPrizesHome from "../pages/DashboardPages/NobelPrizes/NobelPrizesHome/NobelPrizesHome";
+import AlfredNobel from "../pages/DashboardPages/NobelPrizes/AlfredNobel/AlfredNobel";
 
 const RouteComponent = () => {
   return (
@@ -44,7 +49,9 @@ const RouteComponent = () => {
           </Route>
           <Route path={"luciferQuotes"} element={<LuciferQuotes />} />
           <Route path={"testimonials"} element={<Testimonials />} />
-          <Route path={"nobelPrizes"} element={<NobelPrizesHome />} />
+          <Route path={"nobelPrizes"} element={<NobelPrizesHome />}>
+            <Route path={'alfred-nobel'} element={<AlfredNobel />} />
+          </Route>
         </Route>
         {/* Dashboard Routes */}
 
