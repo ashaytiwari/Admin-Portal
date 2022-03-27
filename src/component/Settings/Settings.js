@@ -1,20 +1,36 @@
-import React, { useState } from "react";
-import styles from "./Settings.module.scss";
+import React, { useState, useRef } from "react";
+
+import i18n from "../../i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import { IconButton, Backdrop, MenuItem, Menu } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import TranslateIcon from "@mui/icons-material/Translate";
-import i18n from "../../i18n/i18n";
-import { useTranslation } from "react-i18next";
+
+import useOnClickOutside from '../../utilities/hooks/useOnClickOutside';
+
 import NetworkDetector from "../NetworkDetector/NetworkDetector";
+
+import styles from "./Settings.module.scss";
 import globalStyle from "../../styles/Global.module.scss";
 
 const ThemeToggler = (props) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [languageAnchor, setLanguageAnchor] = useState(null);
   const { t } = useTranslation();
+
+  const settingsPanelReference = useRef(null);
+
+
+  const closeSettingsPanel = () => {
+    setIsPanelOpen(false);
+    setLanguageAnchor(null);
+  }
+
+  useOnClickOutside(settingsPanelReference, closeSettingsPanel);
 
   const open = Boolean(languageAnchor);
 
@@ -43,16 +59,23 @@ const ThemeToggler = (props) => {
     props.setTheme(newTheme);
   };
 
+  const settingsContainerAttributes = {
+    className: styles.themeToggler,
+  };
+
+  const settingsPanelAttributes = {
+    className: `${styles.themePanel} ${globalStyle.scrollbarSection}`,
+    ref: settingsPanelReference
+  };
+
   return (
-    <div className={styles.themeToggler}>
+    <div {...settingsContainerAttributes}>
       {isPanelOpen ? (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={isPanelOpen}
         >
-          <div
-            className={`${styles.themePanel} ${globalStyle.scrollbarSection}`}
-          >
+          <div {...settingsPanelAttributes}>
             <div className={styles.header}>
               <h6>{t("common:settings")}</h6>
               <IconButton onClick={panelHandler} className={styles.closeBtn}>
