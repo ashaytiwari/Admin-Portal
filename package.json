@@ -43,7 +43,27 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "no-console": [
+        "warn"
+      ],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1,
+          "maxEOF": 0
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
