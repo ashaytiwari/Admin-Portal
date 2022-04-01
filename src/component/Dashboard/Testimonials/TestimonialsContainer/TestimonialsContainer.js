@@ -28,7 +28,7 @@ function TestimonialsContainer() {
 
     setSelectedIndex(currentIndex);
 
-  }
+  };
 
   const handleNextControl = () => {
 
@@ -42,7 +42,7 @@ function TestimonialsContainer() {
 
     setSelectedIndex(currentIndex);
 
-  }
+  };
 
   const testimonialPreviousControlAttributes = {
     className: styles.testimonialNavigationControl,
@@ -78,7 +78,7 @@ function TestimonialsContainer() {
         </IconButton>
       </div>
     </div>
-  )
+  );
 }
 
 export default TestimonialsContainer;

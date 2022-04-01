@@ -24,11 +24,10 @@ const ThemeToggler = (props) => {
 
   const settingsPanelReference = useRef(null);
 
-
   const closeSettingsPanel = () => {
     setIsPanelOpen(false);
     setLanguageAnchor(null);
-  }
+  };
 
   useOnClickOutside(settingsPanelReference, closeSettingsPanel);
 

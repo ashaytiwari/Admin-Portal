@@ -32,7 +32,7 @@ const AboutNoblePrizes = () => {
         than three people. Although Nobel Prizes are not awarded posthumously, if a person
         is awarded a prize and dies before receiving it, the prize is presented.</p>
     </div>
-  )
-}
+  );
+};
 
 export default AboutNoblePrizes;

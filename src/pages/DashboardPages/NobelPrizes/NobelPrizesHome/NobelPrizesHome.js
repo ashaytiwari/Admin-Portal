@@ -32,6 +32,6 @@ const NobelPrizesHome = () => {
     </div>
   );
 
-}
+};
 
 export default NobelPrizesHome;

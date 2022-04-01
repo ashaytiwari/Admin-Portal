@@ -21,6 +21,6 @@ const AlfredNobel = () => {
 
     </div>
   );
-}
+};
 
 export default AlfredNobel;

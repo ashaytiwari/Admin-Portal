@@ -32,7 +32,7 @@ function TestimonialCard(props) {
     return () => {
       audio.removeEventListener('ended', () => pauseAudio());
       pauseAudio();
-    }
+    };
 
   }, [audio]);
 
@@ -54,21 +54,21 @@ function TestimonialCard(props) {
       playAudio();
     }
 
-  }
+  };
 
   const playAudio = () => {
 
     audio.play();
     setAudioPlaying(true);
 
-  }
+  };
 
   const pauseAudio = () => {
 
     audio.pause();
     setAudioPlaying(false);
 
-  }
+  };
 
   const profilePictureAttributes = {
     src: testimonial?.avatar,
@@ -99,7 +99,6 @@ function TestimonialCard(props) {
     audioToggleControlTooltip = t("common:pauseAudio");
   }
 
-
   return (
     <div className={styles.testimonialCardContainer}>
 
@@ -129,7 +128,7 @@ function TestimonialCard(props) {
       </div>
 
     </div>
-  )
+  );
 }
 
 export default TestimonialCard;

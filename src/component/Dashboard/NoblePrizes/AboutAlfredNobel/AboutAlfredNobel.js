@@ -45,7 +45,7 @@ const AboutAlfredNobel = () => {
       <a  {...findOutMoreControlAttributes}>Find out more about Alfred's life </a>
 
     </div>
-  )
-}
+  );
+};
 
 export default AboutAlfredNobel;

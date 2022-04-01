@@ -37,7 +37,7 @@ const NoblePrizesFeatures = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default NoblePrizesFeatures;
