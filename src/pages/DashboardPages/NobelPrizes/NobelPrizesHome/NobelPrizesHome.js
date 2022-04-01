@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Outlet, useLocation } from "react-router-dom";
 
-import NoblePrizeLogo from '../../../../assets/images/noblePrize/nobelPrizeLogo.png';
+import NoblePrizeLogo from 'assets/images/noblePrize/nobelPrizeLogo.png';
 
-import AboutNoblePrizes from '../../../../component/Dashboard/NoblePrizes/AboutNoblePrizes/AboutNoblePrizes';
-import NoblePrizesFeatures from '../../../../component/Dashboard/NoblePrizes/NoblePrizesFeatures/NoblePrizesFeatures';
+import AboutNoblePrizes from 'component/Dashboard/NoblePrizes/AboutNoblePrizes/AboutNoblePrizes';
+import NoblePrizesFeatures from 'component/Dashboard/NoblePrizes/NoblePrizesFeatures/NoblePrizesFeatures';
 
 import styles from './NobelPrizesHome.module.scss';
 
