@@ -1,3 +1,32 @@
 .nobelPrizesListContainer {
   margin-top: 20px;
+
+  .noItemsFoundContainer {
+    height: calc(100vh - 220px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .noItemsFoundContent {
+    width: 30%;
+  }
+
+  .noItemsFoundImage {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+
+    path {
+      fill: var(--grey)
+    }
+  }
+
+  .noItemsFoundText {
+    color: var(--grey);
+    font-family: 'Lato-Regular';
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 }
