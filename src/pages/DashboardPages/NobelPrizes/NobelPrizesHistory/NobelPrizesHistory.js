@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
@@ -14,20 +14,21 @@ import NobelPrizesList from 'component/Dashboard/NoblePrizes/NoblePrizesList/Nob
 
 import NoblePrizeLogo from 'assets/images/noblePrize/nobelPrizeLogo.png';
 
-import styles from './NobelPrizesHistory.module.scss';
-
 function NobelPrizesHistory() {
 
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
-  const pageId = params.id;
+  const navigate = useNavigate();
+
+  const pageNumber = params.id;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(pageId);
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
+
+    scrollToTop();
 
     getNobelPrizesData();
 
@@ -35,7 +36,13 @@ function NobelPrizesHistory() {
       dispatch(setNobelPrizesData([]));
     };
 
-  }, [dispatch]);
+  }, [dispatch, pageNumber]);
+
+  const scrollToTop = () => {
+
+    window.scrollTo(0, 0);
+
+  };
 
   const getNobelPrizesData = () => {
 
@@ -45,7 +52,7 @@ function NobelPrizesHistory() {
     setIsLoading(true);
 
     getNobelPrizesListByPageNumber(pageOffset).then((res) => {
-      console.log(res);
+
       if (res.status === 200) {
 
         const data = res.data;
@@ -72,13 +79,13 @@ function NobelPrizesHistory() {
 
     let page = pageNumber;
 
-    if (page === totalPages) {
-      page = -1;
+    if (+page === totalPages) {
+      page = 0;
     }
 
     page++;
 
-    setPageNumber(page);
+    navigatePage(page);
 
   };
 
@@ -86,13 +93,35 @@ function NobelPrizesHistory() {
 
     let page = pageNumber;
 
-    if (page === 1) {
-      page = totalPages;
+    if (+page === 1) {
+      page = totalPages + 1;
     }
 
     page--;
 
-    setPageNumber(page);
+    navigatePage(page);
+
+  };
+
+  const handleFirstPageNavigation = () => {
+
+    let page = 1;
+
+    navigatePage(page);
+
+  };
+
+  const handleLastPageNavigation = () => {
+
+    let page = totalPages;
+
+    navigatePage(page);
+
+  };
+
+  const navigatePage = (page) => {
+
+    navigate(`/dashboard/nobelPrizes/${page}`);
 
   };
 
@@ -106,7 +135,9 @@ function NobelPrizesHistory() {
     totalPages,
     isLoading,
     onNextPage: handleNextPageNavigation,
-    onPreviousPage: handlePreviousPageNavigation
+    onPreviousPage: handlePreviousPageNavigation,
+    onFirstPage: handleFirstPageNavigation,
+    onLastPage: handleLastPageNavigation
   };
 
   return (

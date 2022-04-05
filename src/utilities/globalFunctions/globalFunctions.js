@@ -104,7 +104,7 @@ export const translateFeatureNameForBD = (key, t) => {
 export const extractLaureatesNameAsString = (laureates) => {
 
   const laureatesNamesArray = [];
-  const laureatesLength = laureates.length;
+  const laureatesLength = laureates?.length;
 
   for (let index = 0; index < laureatesLength; index++) {
 
@@ -126,7 +126,7 @@ export const extractLaureatesNameAsString = (laureates) => {
 export const extractLaureatesMotivationAsString = (laureates) => {
 
   const laureatesMotivationArray = [];
-  const laureatesLength = laureates.length;
+  const laureatesLength = laureates?.length;
 
   for (let index = 0; index < laureatesLength; index++) {
 
