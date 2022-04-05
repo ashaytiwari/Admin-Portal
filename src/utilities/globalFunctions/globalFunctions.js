@@ -2,6 +2,12 @@
 import CryptoJs from "crypto-js";
 import config from "../../config/config.json";
 
+import ChemistryLogo from 'assets/images/noblePrize/chemistry.png';
+import LiteratureLogo from 'assets/images/noblePrize/literature.png';
+import PhysicsLogo from 'assets/images/noblePrize/physics.png';
+import PeaceLogo from 'assets/images/noblePrize/peace.png';
+import PhysiologyLogo from 'assets/images/noblePrize/physiology.png';
+
 export const setLocalStorage = (data) => {
   let cipherData = CryptoJs.AES.encrypt(
     JSON.stringify(data),
@@ -93,4 +99,83 @@ export const translateFeatureNameForBD = (key, t) => {
     default:
       return null;
   }
+};
+
+export const extractLaureatesNameAsString = (laureates) => {
+
+  const laureatesNamesArray = [];
+  const laureatesLength = laureates.length;
+
+  for (let index = 0; index < laureatesLength; index++) {
+
+    const laureateName = laureates[index].knownName;
+
+    if (typeof laureateName === 'undefined') {
+      continue;
+    }
+
+    laureatesNamesArray.push(laureateName.en);
+  }
+
+  const laureatesName = laureatesNamesArray.join(', ');
+
+  return laureatesName;
+
+};
+
+export const extractLaureatesMotivationAsString = (laureates) => {
+
+  const laureatesMotivationArray = [];
+  const laureatesLength = laureates.length;
+
+  for (let index = 0; index < laureatesLength; index++) {
+
+    const laureateMotivation = laureates[index].motivation;
+
+    if (typeof laureateMotivation === 'undefined') {
+      continue;
+    }
+
+    laureatesMotivationArray.push(`<span>&#8220; ${laureateMotivation.en} &#8221</span>`);
+  }
+
+  const laureatesName = laureatesMotivationArray.join(' | ');
+
+  return laureatesName;
+
+};
+
+export const decidePrizeLogoPathBasedOnCategory = (category) => {
+
+  const categoryName = category.en;
+
+  switch (categoryName) {
+    case 'Chemistry':
+      return ChemistryLogo;
+    case 'Literature':
+      return LiteratureLogo;
+    case 'Peace':
+      return PeaceLogo;
+    case 'Physics':
+      return PhysicsLogo;
+    default:
+      return PhysiologyLogo;
+  }
+
+};
+
+export const generateRandomHexadecimalColorCode = () => {
+
+  let code = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 'A', 'B', 'C', 'D', 'E', 'F'];
+  let hexCode = '#';
+
+  for (let index = 0; index < 6; index++) {
+
+    let randomIndexNumber = Math.floor(Math.random() * 9);
+
+    hexCode += code[randomIndexNumber];
+
+  }
+
+  return hexCode;
 };

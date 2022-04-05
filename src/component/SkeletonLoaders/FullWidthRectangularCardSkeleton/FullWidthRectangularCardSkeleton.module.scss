@@ -1,0 +1,12 @@
+.fullWidthRectangularCardSkeletonContainer {
+  margin-top: 20px;
+
+  .cardSkeleton {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    background-color: var(--skeleton);
+    margin-bottom: 20px;
+  }
+
+}
