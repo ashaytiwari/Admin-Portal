@@ -1,9 +1,10 @@
-import { SET_LUCIFER_QUOTES, SET_TESTIMONIAL_DATA } from "../constants/common";
+import { SET_LUCIFER_QUOTES, SET_NOBEL_PRIZES_DATA, SET_TESTIMONIAL_DATA } from "redux/constants/common";
 
 /* eslint-disable import/no-anonymous-default-export */
 const initialState = {
   luciferQuotes: [],
-  testimonialData: []
+  testimonialData: [],
+  nobelPrizesData: []
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -17,6 +18,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         testimonialData: payload
+      };
+    case SET_NOBEL_PRIZES_DATA:
+      return {
+        ...state,
+        nobelPrizesData: payload
       };
     default:
       return state;

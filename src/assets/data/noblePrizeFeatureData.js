@@ -10,6 +10,6 @@ export const nobelPrizeFeaturesData = [
   {
     title: "History",
     icon: RestoreIcon,
-    link: "/dashboard/nobelPrizes/:id"
+    link: "/dashboard/nobelPrizes/1"
   }
 ];

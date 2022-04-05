@@ -18,6 +18,7 @@ import LuciferQuotes from "../pages/DashboardPages/LuciferQuotes/LuciferQuotes";
 import Testimonials from "../pages/DashboardPages/Testimonials/Testimonials";
 import NobelPrizesHome from "../pages/DashboardPages/NobelPrizes/NobelPrizesHome/NobelPrizesHome";
 import AlfredNobel from "../pages/DashboardPages/NobelPrizes/AlfredNobel/AlfredNobel";
+import NobelPrizesHistory from "pages/DashboardPages/NobelPrizes/NobelPrizesHistory/NobelPrizesHistory";
 
 const RouteComponent = () => {
   return (
@@ -51,6 +52,7 @@ const RouteComponent = () => {
           <Route path={"testimonials"} element={<Testimonials />} />
           <Route path={"nobelPrizes"} element={<NobelPrizesHome />}>
             <Route path={'alfred-nobel'} element={<AlfredNobel />} />
+            <Route path={':id'} element={<NobelPrizesHistory />} />
           </Route>
         </Route>
         {/* Dashboard Routes */}
