@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
-import { useTranslation } from "react-i18next";
 
 import { getNobelPrizesListByPageNumber } from 'services/commonServices';
 import { setNobelPrizesData } from 'redux/actions/common.actions';
