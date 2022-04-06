@@ -6,8 +6,6 @@ function CountryItem(props) {
 
   const { data, onSelect } = props;
 
-  console.log(data);
-
   const countryFlagAttributes = {
     src: data.flags.svg,
     className: styles.countryFlag

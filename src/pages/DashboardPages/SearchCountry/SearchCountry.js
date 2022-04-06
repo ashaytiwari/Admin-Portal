@@ -13,6 +13,8 @@ import Loader from 'component/Loader/Loader';
 import AutoComplete from 'component/UI/Autocomplete/Autocomplete';
 import CountryItem from 'component/Dashboard/CountryItem/CountryItem';
 
+import { handleFilterChange } from './utilities';
+
 import styles from './SearchCountry.module.scss';
 
 function SearchCountry() {
@@ -67,6 +69,9 @@ function SearchCountry() {
     RenderElement: CountryItem,
     onSelect(country) {
       console.log(country);
+    },
+    onFilter(data, filterKey) {
+      return handleFilterChange(data, filterKey);
     }
   };
 

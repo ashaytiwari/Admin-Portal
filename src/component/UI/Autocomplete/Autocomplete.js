@@ -8,12 +8,12 @@ import styles from './Autocomplete.module.scss';
 
 function Autocomplete(props) {
 
-  const { data, RenderElement, onSelect } = props;
+  const { data, RenderElement, onSelect, onFilter } = props;
 
   const autocompleteContainerReference = useRef(null);
 
   const [displayDataListMenu, setDisplayDataListMenu] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchText, setSearchText] = useState('');
   const [cursorPosition, setCursorPosition] = useState(-1);
 
   const showDataListMenu = () => {
@@ -36,15 +36,29 @@ function Autocomplete(props) {
     return <RenderElement {...autocompleteItemAttributes} />;
   }
 
+  function renderNoResultFoundContent() {
+
+    return <div className={`${styles.dataListMenu} ${styles.noResultFound}`}>
+      <span className={styles.noResultFoundText}>No country found for your search.</span>
+    </div>;
+
+  }
+
   function renderDataListMenu() {
 
     if (displayDataListMenu === false) {
       return;
     }
 
+    const filteredList = onFilter(data, searchText);
+
+    if (filteredList.length === 0) {
+      return renderNoResultFoundContent();
+    }
+
     return <div className={`${styles.dataListMenu} ${globalStyles.scrollbarSection}`}>
       {
-        data.map((item, index) => (
+        filteredList.map((item, index) => (
           renderAutocompleteItem(item, index)
         ))
       }
@@ -56,9 +70,9 @@ function Autocomplete(props) {
     type: 'text',
     className: styles.autocompleteInput,
     placeholder: 'Search country',
-    value: searchTerm,
+    value: searchText,
     onChange(event) {
-      setSearchTerm(event.target.value);
+      setSearchText(event.target.value);
     },
     onClick() {
       showDataListMenu();
