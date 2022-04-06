@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import useOnClickOutside from 'utilities/hooks/useOnClickOutside';
 
@@ -11,10 +11,39 @@ function Autocomplete(props) {
   const { data, RenderElement, onSelect, onFilter } = props;
 
   const autocompleteContainerReference = useRef(null);
+  const dataListMenuReference = useRef(null);
 
   const [displayDataListMenu, setDisplayDataListMenu] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [cursorPosition, setCursorPosition] = useState(-1);
+
+  useEffect(() => {
+
+    if (cursorPosition < 0) {
+      return;
+    }
+
+    if (dataListMenuReference.current === null) {
+      return;
+    }
+
+    const listItems = Array.from(dataListMenuReference.current.children);
+    const listItem = listItems[cursorPosition];
+
+    if (typeof listItem !== 'undefined') {
+      scrollIntoView(listItem.offsetTop);
+    }
+
+  }, [cursorPosition]);
+
+  const scrollIntoView = (position) => {
+
+    dataListMenuReference.current.scrollTo({
+      top: position,
+      behavior: "smooth"
+    });
+
+  };
 
   const showDataListMenu = () => {
     setDisplayDataListMenu(true);
@@ -26,11 +55,85 @@ function Autocomplete(props) {
 
   useOnClickOutside(autocompleteContainerReference, hideDataListMenu);
 
+  const handleKeyDownEvent = (event) => {
+
+    let key = event.key;
+
+    if (key === 'Escape') {
+      hideDataListMenu();
+    }
+
+    if (key === 'ArrowUp') {
+      handleUpArrowKeyEvent();
+    }
+
+    if (key === 'ArrowDown') {
+      handleDownArrowKeyEvent();
+    }
+
+    if (key === "Enter" && cursorPosition > -1) {
+      handleEnterKeyEvent();
+    }
+
+  };
+
+  const handleUpArrowKeyEvent = () => {
+
+    let cursor = cursorPosition;
+
+    if (cursor <= 0) {
+      cursor = data.length;
+    }
+
+    cursor--;
+
+    setCursorPosition(cursor);
+
+  };
+
+  const handleDownArrowKeyEvent = () => {
+
+    let cursor = cursorPosition;
+
+    if (cursor === data.length - 1) {
+      cursor = -1;
+    }
+
+    cursor++;
+
+    setCursorPosition(cursor);
+
+  };
+
+  const handleEnterKeyEvent = () => {
+
+    const country = data[cursorPosition];
+
+    handleOnSelectItem(country);
+
+  };
+
+  const handleOnSelectItem = (country) => {
+
+    onSelect(country);
+
+    setSearchText(country.name.official);
+
+    setCursorPosition(0);
+
+    hideDataListMenu();
+
+  };
+
   function renderAutocompleteItem(data, index) {
 
     const autocompleteItemAttributes = {
       data,
-      key: index
+      key: index,
+      selected: cursorPosition === index ? true : false,
+      onSelect(country) {
+        handleOnSelectItem(country);
+      }
     };
 
     return <RenderElement {...autocompleteItemAttributes} />;
@@ -56,7 +159,12 @@ function Autocomplete(props) {
       return renderNoResultFoundContent();
     }
 
-    return <div className={`${styles.dataListMenu} ${globalStyles.scrollbarSection}`}>
+    const dataListMenuAttributes = {
+      className: `${styles.dataListMenu} ${globalStyles.scrollbarSection}`,
+      ref: dataListMenuReference
+    };
+
+    return <div {...dataListMenuAttributes}>
       {
         filteredList.map((item, index) => (
           renderAutocompleteItem(item, index)
@@ -72,10 +180,14 @@ function Autocomplete(props) {
     placeholder: 'Search country',
     value: searchText,
     onChange(event) {
+      showDataListMenu();
       setSearchText(event.target.value);
     },
     onClick() {
       showDataListMenu();
+    },
+    onKeyDown(event) {
+      handleKeyDownEvent(event);
     }
   };
 
