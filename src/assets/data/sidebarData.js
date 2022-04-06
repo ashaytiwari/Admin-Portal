@@ -3,6 +3,7 @@ import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import StarsIcon from "@mui/icons-material/Stars";
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 export const sidebarData = [
   {
@@ -29,5 +30,10 @@ export const sidebarData = [
     icon: <EmojiEventsOutlinedIcon />,
     name: 'Nobel Prizes',
     link: "/dashboard/nobelPrizes"
+  },
+  {
+    icon: <LanguageOutlinedIcon />,
+    name: 'Search Country',
+    link: "/dashboard/searchCountry"
   }
 ];
