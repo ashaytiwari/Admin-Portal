@@ -11,7 +11,8 @@ import { getCountryList } from 'services/commonServices';
 
 import Loader from 'component/Loader/Loader';
 import AutoComplete from 'component/UI/Autocomplete/Autocomplete';
-import CountryItem from 'component/Dashboard/CountryItem/CountryItem';
+import CountryItem from 'component/Dashboard/SearchCountry/CountryItem/CountryItem';
+import CountryView from 'component/Dashboard/SearchCountry/CountryView/CountryView';
 
 import { handleFilterChange } from './utilities';
 
@@ -25,6 +26,7 @@ function SearchCountry() {
   const countryData = useSelector((state) => state.common.countryList);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [country, setCountry] = useState(null);
 
   useEffect(() => {
 
@@ -64,11 +66,24 @@ function SearchCountry() {
     return <Loader />;
   }
 
+  function renderCountryView() {
+
+    if (country === null) {
+      return;
+    }
+
+    const countryViewProperties = {
+      country
+    };
+
+    return <CountryView {...countryViewProperties} />;
+  }
+
   const autoCompleteProperties = {
     data: countryData,
     RenderElement: CountryItem,
     onSelect(country) {
-      console.log(country);
+      setCountry(country);
     },
     onFilter(data, filterKey) {
       return handleFilterChange(data, filterKey);
@@ -80,13 +95,15 @@ function SearchCountry() {
 
       <div className={'text-center'}>
         <h3 className={styles.searchCountryHeading}>Search Country!!!</h3>
-        <p className={styles.searchCountryText}>You can search a country by it's name</p>
+        <p className={styles.searchCountryText}>To see a country details, you can search country by it's name</p>
       </div>
 
       <div className={styles.searchCountryControlContainer}>
         <SearchOutlinedIcon className={styles.searchIcon} />
         <AutoComplete {...autoCompleteProperties} />
       </div>
+
+      {renderCountryView()}
 
     </div>
   );
