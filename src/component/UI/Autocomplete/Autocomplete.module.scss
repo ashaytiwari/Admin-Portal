@@ -1,0 +1,25 @@
+.autocompleteContainer {
+  width: 100%;
+  position: relative;
+
+  .autocompleteInput {
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+  }
+
+  .dataListMenu {
+    position: absolute;
+    top: 40px;
+    left: -70px;
+    background-color: var(--secondaryBackground);
+    width: 400px;
+    box-shadow: 2px 1px 14px -2px rgba(0, 0, 0, 0.59);
+    height: 300px;
+    overflow-y: auto;
+  }
+}

@@ -1,3 +1,5 @@
+import { countryData } from "assets/data/countryData";
+
 import axios from "../axios/axios";
 
 export const getLuciferQuotes = async (query) => {
@@ -32,9 +34,10 @@ export const getNobelPrizesListByPageNumber = async (pageNumber) => {
 
 export const getCountryList = async () => {
 
-  const url = 'https://restcountries.com/v3.1/all';
-
-  const res = await axios.get(url);
+  const res = {
+    status: 200,
+    data: countryData
+  };
 
   return res;
 

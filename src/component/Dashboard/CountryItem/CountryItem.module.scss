@@ -1,0 +1,25 @@
+.countryItemContainer {
+  display: grid;
+  grid-template-columns: 30px auto;
+  column-gap: 20px;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--grey);
+  cursor: pointer;
+
+  &:hover,
+  &.selected {
+    background-color: var(--lightPrimary);
+  }
+
+  .countryFlag {
+    width: 100%;
+  }
+
+  .countryName {
+    color: var(--text);
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    margin: 0;
+  }
+}
