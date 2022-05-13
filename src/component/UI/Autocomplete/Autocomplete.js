@@ -16,6 +16,7 @@ function Autocomplete(props) {
   const [displayDataListMenu, setDisplayDataListMenu] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [cursorPosition, setCursorPosition] = useState(-1);
+  const [filteredList, setFilteredList] = useState(onFilter(data, searchText));
 
   useEffect(() => {
 
@@ -35,6 +36,13 @@ function Autocomplete(props) {
     }
 
   }, [cursorPosition]);
+
+  useEffect(() => {
+
+    setFilteredList(onFilter(data, searchText));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchText]);
 
   const scrollIntoView = (position) => {
 
@@ -107,7 +115,7 @@ function Autocomplete(props) {
 
   const handleEnterKeyEvent = () => {
 
-    const country = data[cursorPosition];
+    const country = filteredList[cursorPosition];
 
     handleOnSelectItem(country);
 
@@ -152,8 +160,6 @@ function Autocomplete(props) {
     if (displayDataListMenu === false) {
       return;
     }
-
-    const filteredList = onFilter(data, searchText);
 
     if (filteredList.length === 0) {
       return renderNoResultFoundContent();
