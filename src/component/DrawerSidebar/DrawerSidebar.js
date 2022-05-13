@@ -14,14 +14,12 @@ const DrawerSidebar = () => {
     <div className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
         <img src={Logo} alt={"logo"} />
-        <h4>Admin Portal</h4>
       </div>
 
       <div className={styles.body}>
         <div
-          className={`${
-            location.pathname === "/dashboard" && styles.activeItem
-          } ${styles.sidebarItem}`}
+          className={`${location.pathname === "/dashboard" && styles.activeItem
+            } ${styles.sidebarItem}`}
           onClick={() => navigate("/dashboard")}
         >
           <HomeOutlinedIcon />
