@@ -1,0 +1,25 @@
+.carousel {
+  border-radius: 10px;
+  overflow: hidden;
+
+  .carouselImage {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .carouselCaption {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carouselTitle {
+    font-family: 'Lato-Bold';
+    letter-spacing: 0.6px;
+  }
+
+  .carouselNavigationControl {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+}

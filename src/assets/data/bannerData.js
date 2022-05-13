@@ -33,7 +33,7 @@ export const bannerData = [
   },
   {
     imageURL: Banner6,
-    title: 'Top 10 Amazing Ocean Mysteries and Phenomena',
+    title: 'Amazing Ocean Mysteries and Phenomena',
     url: 'https://www.marineinsight.com/environment/top-10-amazing-ocean-mysteries-and-phenomena/'
   }
 ];
