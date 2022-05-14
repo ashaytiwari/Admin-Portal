@@ -29,7 +29,6 @@ const Dashboard = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   if (!user) {
-    console.log("Logout");
     return <Navigate replace to={"/login"} />;
   }
 

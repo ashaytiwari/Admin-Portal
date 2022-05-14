@@ -1,7 +1,7 @@
 .header {
-  background-color: var(--secondaryBackground) !important;
-  backdrop-filter: blur(10px) saturate(162%);
-  -webkit-backdrop-filter: blur(10px) saturate(162%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--headerGlass) !important;
 }
 
 .drawer div {

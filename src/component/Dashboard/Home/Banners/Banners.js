@@ -52,7 +52,7 @@ function Banners() {
 
   const carouselProperties = {
     indicators: false,
-    interval: 10000,
+    interval: 4000,
     className: styles.carousel
   };
 

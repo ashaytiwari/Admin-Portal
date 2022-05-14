@@ -1,0 +1,64 @@
+.informationCardsContainer {
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+
+  .informationCard {
+    width: 100%;
+    background-color: var(--secondaryBackground);
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 60px auto;
+    column-gap: 20px;
+    align-items: center;
+    height: fit-content;
+
+    .iconWrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.account {
+        background: #fe5b0038;
+        color: #ff7601;
+      }
+
+      &.download {
+        color: #10dc29;
+        background: #2bd37b38;
+      }
+
+      &.stories {
+        color: #ff01019c;
+        background: #ff000029
+      }
+    }
+
+    .informationCardContent {
+      display: grid;
+      grid-template-rows: auto auto;
+      row-gap: 5px;
+
+      span {
+        font-size: 25px;
+        font-family: 'Lato-Bold';
+        color: var(--text);
+      }
+
+      label {
+        font-size: 15px;
+        font-family: 'Lato-Regular';
+        color: var(--grey);
+      }
+    }
+  }
+
+}
