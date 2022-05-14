@@ -1,7 +1,7 @@
 import Banner1 from '../images/banner/banner1.jpeg';
 import Banner2 from '../images/banner/banner2.jpg';
-import Banner3 from '../images/banner/banner3.jpeg';
-import Banner4 from '../images/banner/banner4.jpeg';
+import Banner3 from '../images/banner/banner3.jpg';
+import Banner4 from '../images/banner/banner4.jpg';
 import Banner5 from '../images/banner/banner5.jpg';
 import Banner6 from '../images/banner/banner6.jpg';
 
@@ -23,8 +23,8 @@ export const bannerData = [
   },
   {
     imageURL: Banner4,
-    title: 'Apple Machine Learning Journal',
-    url: 'https://machinelearning.apple.com/'
+    title: '60 Healthy Meal Prep Ideas',
+    url: 'https://www.loveandlemons.com/healthy-meal-prep-ideas/'
   },
   {
     imageURL: Banner5,

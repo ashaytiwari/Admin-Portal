@@ -42,3 +42,13 @@ export const getCountryList = async () => {
   return res;
 
 };
+
+export const getNewsFeedList = async () => {
+
+  const url = 'https://beelytical.kritin.tech/api/getnewsfeed?status_enum_id=0&news_user_type_id=0';
+
+  const res = await axios.get(url);
+
+  return res;
+
+};

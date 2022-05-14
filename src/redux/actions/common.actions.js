@@ -1,6 +1,7 @@
 import {
   SET_COUNTRY_LIST,
   SET_LUCIFER_QUOTES,
+  SET_NEWS_FEED,
   SET_NOBEL_PRIZES_DATA,
   SET_TESTIMONIAL_DATA
 } from "redux/constants/common";
@@ -29,6 +30,13 @@ export const setNobelPrizesData = (data) => async (dispatch) => {
 export const setCountryList = (data) => async (dispatch) => {
   dispatch({
     type: SET_COUNTRY_LIST,
+    payload: data
+  });
+};
+
+export const setNewsFeedList = (data) => async (dispatch) => {
+  dispatch({
+    type: SET_NEWS_FEED,
     payload: data
   });
 };
