@@ -1,5 +1,13 @@
 .homeContainer {
+
   display: grid;
   grid-template-rows: 300px 105px auto;
   row-gap: 30px;
+
+  .homeBodyContainer {
+    display: grid;
+    grid-template-columns: 66% 33%;
+    column-gap: 20px;
+  }
+
 }
