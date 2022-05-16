@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import i18n from "../../i18n/i18n";
 import { useTranslation } from "react-i18next";
@@ -9,6 +9,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import TranslateIcon from "@mui/icons-material/Translate";
+
+import InternalEvents from "event-system/constants";
 
 import useOnClickOutside from '../../utilities/hooks/useOnClickOutside';
 
@@ -23,6 +25,16 @@ const ThemeToggler = (props) => {
   const { t } = useTranslation();
 
   const settingsPanelReference = useRef(null);
+
+  useEffect(() => {
+
+    document.addEventListener(InternalEvents.OPEN_PLATFORM_SETTINGS, () => panelHandler());
+
+    return () => {
+      document.removeEventListener(InternalEvents.OPEN_PLATFORM_SETTINGS, () => panelHandler());
+    };
+
+  }, []);
 
   const closeSettingsPanel = () => {
     setIsPanelOpen(false);

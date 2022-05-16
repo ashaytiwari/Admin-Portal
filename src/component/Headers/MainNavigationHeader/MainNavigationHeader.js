@@ -46,7 +46,14 @@ function MainNavigationHeader() {
 
   }
 
+  function closeProfilePopup() {
+
+    setDisplayProfilePopup(false);
+
+  }
+
   useOnClickOutside(notificationControlContainerReference, closeNotificationPopup);
+  useOnClickOutside(profileControlContainerReference, closeProfilePopup);
 
   function getUserProfile() {
 
@@ -121,6 +128,10 @@ function MainNavigationHeader() {
 
     const profileImageAlternativeText = `${profileDetails[0]?.user_name} profile`;
 
+    const profilePopupAttributes = {
+      onClose: closeProfilePopup
+    };
+
     return (
       <div {...profileControlAttributes}>
 
@@ -134,7 +145,7 @@ function MainNavigationHeader() {
             )
         }
 
-        {displayProfilePopup && <ProfilePopup />}
+        {displayProfilePopup && <ProfilePopup {...profilePopupAttributes} />}
       </div>
     );
 
