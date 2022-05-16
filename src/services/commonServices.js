@@ -1,6 +1,6 @@
 import { countryData } from "assets/data/countryData";
 
-import axios from "../axios/axios";
+import axios from "axios/axios";
 
 export const getLuciferQuotes = async (query) => {
 
