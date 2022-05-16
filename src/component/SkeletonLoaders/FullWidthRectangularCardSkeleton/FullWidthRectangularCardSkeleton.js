@@ -18,7 +18,7 @@ function FullWidthRectangularCardSkeleton() {
     <div className={styles.fullWidthRectangularCardSkeletonContainer}>
       {
         array.map((item, index) => (
-          <Skeleton {...skeletonProperties} />
+          <Skeleton {...skeletonProperties} key={index} />
         ))
       }
     </div>

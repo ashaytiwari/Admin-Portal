@@ -25,10 +25,11 @@ function NotificationPopup() {
 
   }
 
-  function renderNotificationItem(notification) {
+  function renderNotificationItem(notification, index) {
 
     const notificationItemProperties = {
-      notification
+      notification,
+      key: index
     };
 
     return <NotificationItem {...notificationItemProperties} />;
@@ -41,8 +42,8 @@ function NotificationPopup() {
 
         <div className={styles.notificationsList}>
           {
-            newNotificationList.map((notification) => (
-              renderNotificationItem(notification)
+            newNotificationList.map((notification, index) => (
+              renderNotificationItem(notification, index)
             ))
           }
         </div>
@@ -58,8 +59,8 @@ function NotificationPopup() {
 
         <div className={styles.notificationsList}>
           {
-            oldNotificationList.map((notification) => (
-              renderNotificationItem(notification)
+            oldNotificationList.map((notification, index) => (
+              renderNotificationItem(notification, index)
             ))
           }
         </div>

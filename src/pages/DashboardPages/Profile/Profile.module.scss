@@ -1,0 +1,84 @@
+.profileContainer {
+  color: var(--text);
+  font-family: 'Lato-Regular';
+  position: relative;
+
+  .profileInfoSection {
+    width: 100%;
+    background-color: var(--secondaryBackground);
+    border-radius: 15px;
+    overflow: hidden;
+
+    .profileWallpaper {
+      width: 100%;
+    }
+
+    .profileImageOuterContainer {
+      width: 150px;
+      height: 150px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+
+      .profileImageInnerContainer {
+        position: relative;
+
+        .profileImage {
+          width: 100%;
+          opacity: 1;
+          display: block;
+          transition: .5s ease;
+          backface-visibility: hidden;
+        }
+
+        .overlayContent {
+          transition: .5s ease;
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          text-align: center;
+
+          .editControl {
+            color: var(--primary);
+          }
+        }
+
+        &:hover {
+
+          .profileImage {
+            opacity: 0.4;
+          }
+
+          .overlayContent {
+            opacity: 1;
+          }
+        }
+
+      }
+    }
+
+    .profileNameAndEmail {
+      padding: 20px;
+      text-align: right;
+
+      h5 {
+        margin: 0;
+        text-transform: capitalize;
+      }
+
+      span {
+        color: var(--grey);
+      }
+    }
+  }
+}

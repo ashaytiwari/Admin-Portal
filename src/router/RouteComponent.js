@@ -20,6 +20,7 @@ import NobelPrizesHome from "../pages/DashboardPages/NobelPrizes/NobelPrizesHome
 import AlfredNobel from "../pages/DashboardPages/NobelPrizes/AlfredNobel/AlfredNobel";
 import NobelPrizesHistory from "pages/DashboardPages/NobelPrizes/NobelPrizesHistory/NobelPrizesHistory";
 import SearchCountry from "pages/DashboardPages/SearchCountry/SearchCountry";
+import Profile from "pages/DashboardPages/Profile/Profile";
 
 const RouteComponent = () => {
   return (
@@ -56,6 +57,7 @@ const RouteComponent = () => {
             <Route path={":id"} element={<NobelPrizesHistory />} />
           </Route>
           <Route path={"searchCountry"} element={<SearchCountry />} />
+          <Route path={"profile"} element={<Profile />} />
         </Route>
         {/* Dashboard Routes */}
 
