@@ -13,6 +13,20 @@ function TopInstalledCountryList() {
 
   const [sort, setSort] = useState(null); // null for no sort option is selected, 0 for ascending sort and 1 for descending sort
 
+  function handleSortControlClick() {
+
+    if (sort === null) {
+      return setSort(0); // no sort -> ascending sort
+    }
+
+    if (sort === 0) {
+      return setSort(1); // ascending sort -> descending sort
+    }
+
+    return setSort(0); // descending sort -> ascending sort
+
+  }
+
   function renderCountryItem(country, index) {
 
     const countryItemAttributes = {
@@ -48,20 +62,6 @@ function TopInstalledCountryList() {
         }
       </div>
     );
-
-  }
-
-  function handleSortControlClick() {
-
-    if (sort === null) {
-      return setSort(0); // no sort -> ascending sort
-    }
-
-    if (sort === 0) {
-      return setSort(1); // ascending sort -> descending sort
-    }
-
-    return setSort(0); // descending sort -> ascending sort
 
   }
 
