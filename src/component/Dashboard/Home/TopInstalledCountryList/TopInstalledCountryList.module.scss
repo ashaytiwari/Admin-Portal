@@ -8,6 +8,7 @@
   display: grid;
   grid-template-rows: 40px auto;
   row-gap: 20px;
+  height: fit-content;
 
   .countryListWrapper {
     display: grid;
