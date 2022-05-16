@@ -8,8 +8,6 @@
   display: grid;
   grid-template-rows: min-content 1px;
   width: 300px;
-  height: calc(100vh - 100px);
-  overflow-y: scroll;
   z-index: 3;
   color: var(--text);
 
@@ -33,6 +31,11 @@
       font-size: 15px;
       color: var(--grey);
     }
+  }
+
+  .notificationPopupBody {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
   }
 
   .notificationsSection {

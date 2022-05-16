@@ -69,17 +69,21 @@ function NotificationPopup() {
   }
 
   return (
-    <div className={`hide-scrollbar ${styles.notificationPopupContainer}`}>
+    <div className={styles.notificationPopupContainer}>
 
       {renderPopupHeader()}
 
       {renderDashedBorder()}
 
-      {renderNewNotificationSection()}
+      <div className={`hide-scrollbar ${styles.notificationPopupBody}`}>
 
-      {renderDashedBorder()}
+        {renderNewNotificationSection()}
 
-      {renderOldNotificationSection()}
+        {renderDashedBorder()}
+
+        {renderOldNotificationSection()}
+
+      </div>
 
     </div>
   );
