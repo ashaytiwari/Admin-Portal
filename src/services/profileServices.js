@@ -1,6 +1,6 @@
 import axios from "axios/axios";
 
-export const getNewsFeedList = async (id) => {
+export const getUserProfileInformation = async (id) => {
 
   const url = `https://beelytical.kritin.tech/api/userprofile?user_id=${id}`;
 

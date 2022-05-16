@@ -1,6 +1,6 @@
 .mainNavigationHeader {
   display: grid;
-  grid-template-columns: auto 50px;
+  grid-template-columns: auto min-content;
   column-gap: 20px;
   align-items: center;
   width: 100%;
@@ -9,6 +9,12 @@
     color: var(--text);
     font-family: 'Lato-Bold';
     margin: 0;
+  }
+
+  .headerControls {
+    display: grid;
+    grid-template-columns: 50px 50px;
+    column-gap: 10px;
   }
 
   .notificationControlContainer {
@@ -25,6 +31,32 @@
         color: var(--text);
       }
     }
+
+  }
+
+  .profileControlContainer {
+
+    .profileImageSkeleton {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      cursor: pointer;
+      background-color: var(--skeleton);
+    }
+
+    .profileImageWrapper {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      overflow: hidden;
+
+      .profileImage {
+        width: 100%;
+        height: 100%;
+        cursor: pointer !important;
+      }
+    }
+
 
   }
 }
