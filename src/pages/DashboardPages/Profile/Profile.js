@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
+import ProfileEditor from 'component/Dashboard/ProfileEditor/ProfileEditor';
+
 import ProfileWallpaper from 'assets/images/wallpaper.webp';
 
 import styles from './Profile.module.scss';
 
 function Profile() {
+
+  const [displayEditProfileImageEditor, setDisplayEditProfileImageEditor] = useState(false);
 
   const profileDetails = useSelector((state) => state.profile.userProfile);
   const profileDetail = profileDetails[0];
@@ -21,6 +25,13 @@ function Profile() {
       src: profileDetail?.profile_signed_url
     };
 
+    const editorControlAttributes = {
+      className: styles.editControl,
+      onClick() {
+        setDisplayEditProfileImageEditor((_displayEditor) => !_displayEditor);
+      }
+    };
+
     return (
       <div className={styles.profileImageOuterContainer}>
 
@@ -29,7 +40,7 @@ function Profile() {
           <img alt={'profile'} {...profileImageAttributes} />
 
           <div className={styles.overlayContent}>
-            <IconButton className={styles.editControl}>
+            <IconButton {...editorControlAttributes}>
               <EditIcon fontSize='large' />
             </IconButton>
           </div>
@@ -63,9 +74,31 @@ function Profile() {
     );
   }
 
+  function renderEditProfileEditor() {
+
+    if (displayEditProfileImageEditor === false) {
+      return;
+    }
+
+    const profileEditorProperties = {
+      open: displayEditProfileImageEditor,
+      profile: profileDetail,
+      onClose(event) {
+        setDisplayEditProfileImageEditor(false);
+      }
+    };
+
+    return <ProfileEditor {...profileEditorProperties} />;
+
+  }
+
   return (
     <div className={styles.profileContainer}>
+
       {renderProfileInfoSection()}
+
+      {renderEditProfileEditor()}
+
     </div>
   );
 

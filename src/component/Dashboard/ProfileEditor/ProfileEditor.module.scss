@@ -1,0 +1,67 @@
+.dialogContentContainer {
+  display: grid;
+  grid-template-rows: 50px auto 50px;
+  row-gap: 20px;
+  padding: 20px;
+  font-family: 'Lato-Regular';
+  color: var(--text);
+
+  .dialogHeader {
+    display: grid;
+    grid-template-columns: auto 50px;
+    column-gap: 20px;
+    align-items: center;
+
+    h5 {
+      font-family: 'Lato-Bold';
+      font-size: 20px;
+    }
+
+    .dialogCloseControl {
+      width: 50px;
+      height: 50px;
+      color: var(--grey);
+    }
+  }
+
+  .dialogContentBody {
+
+    .profileImageControl {
+      display: grid;
+      grid-template-rows: 200px auto;
+      row-gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      .profileImageWrapper {
+        width: 200px;
+        height: 200px;
+        border-radius: 200px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+
+        .profileImage {
+          width: 100%;
+        }
+      }
+
+      .uploadImageControl {
+        font-size: 18px;
+        font-family: 'Lato-Regular';
+        background-color: inherit;
+        padding: 0;
+        outline: none;
+        border: none;
+        color: var(--primary);
+        transition: text-decoration 0.5s ease;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
