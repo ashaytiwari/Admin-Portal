@@ -179,3 +179,11 @@ export const generateRandomHexadecimalColorCode = () => {
 
   return hexCode;
 };
+
+export const getThemeVariablesValue = (variable) => {
+
+  const value = getComputedStyle(document.documentElement).getPropertyValue(variable);
+
+  return value;
+
+};
