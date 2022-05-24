@@ -15,7 +15,10 @@ const App = () => {
 
   // function to get color theme from storage
   const getLocalStorageData = async () => {
+
     const storageTheme = localStorage.getItem("COLOR_THEME");
+
+    document.documentElement.setAttribute('data-theme', storageTheme);
 
     if (storageTheme) {
       setTheme(storageTheme);
@@ -25,6 +28,14 @@ const App = () => {
   useEffect(() => {
     getLocalStorageData();
   }, []);
+
+  const handleThemeChange = (_theme) => {
+
+    document.documentElement.setAttribute('data-theme', _theme);
+
+    setTheme(_theme);
+
+  };
 
   /**
    * function to close snackbar notifications
@@ -53,7 +64,7 @@ const App = () => {
     >
       <div data-theme={theme}>
         <RouteComponent />
-        <Settings setTheme={setTheme} />
+        <Settings setTheme={handleThemeChange} />
       </div>
     </SnackbarProvider>
   );
