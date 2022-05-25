@@ -187,3 +187,19 @@ export const getThemeVariablesValue = (variable) => {
   return value;
 
 };
+
+export const convertDataURLToFile = (dataURL) => {
+
+  let arr = dataURL.split(','),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = window.atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], 'profile-image.png', { type: mime });
+
+};

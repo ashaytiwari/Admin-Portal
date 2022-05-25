@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
 import ProfileEditor from 'component/Dashboard/ProfileEditor/ProfileEditor';
+
+import { getUserProfileInformation } from 'services/profileServices';
+
+import { getLocalStorage } from 'utilities/globalFunctions/globalFunctions';
+
+import { setUserProfile } from 'redux/actions/profile.actions';
 
 import ProfileWallpaper from 'assets/images/wallpaper.webp';
 
@@ -13,10 +19,28 @@ import styles from './Profile.module.scss';
 
 function Profile() {
 
+  const userProfile = getLocalStorage();
+
+  const dispatch = useDispatch();
+
   const [displayEditProfileImageEditor, setDisplayEditProfileImageEditor] = useState(false);
 
   const profileDetails = useSelector((state) => state.profile.userProfile);
   const profileDetail = profileDetails[0];
+
+  function updateProfile() {
+
+    getUserProfileInformation(userProfile.admin_id).then((res) => {
+
+      if (res.data.statuscode === 200) {
+
+        dispatch(setUserProfile(res.data.data));
+
+        setDisplayEditProfileImageEditor(false);
+
+      }
+    });
+  }
 
   function renderProfileImageSection() {
 
@@ -85,11 +109,16 @@ function Profile() {
       profile: profileDetail,
       onClose(event) {
         setDisplayEditProfileImageEditor(false);
-      }
+      },
+      onUpdate: updateProfile
     };
 
     return <ProfileEditor {...profileEditorProperties} />;
 
+  }
+
+  if (typeof profileDetail === 'undefined') {
+    return <div></div>;
   }
 
   return (
