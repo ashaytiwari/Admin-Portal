@@ -4,6 +4,7 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import StarsIcon from "@mui/icons-material/Stars";
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 
 export const sidebarData = [
   {
@@ -35,5 +36,10 @@ export const sidebarData = [
     icon: <LanguageOutlinedIcon />,
     name: 'Search Country',
     link: "/dashboard/searchCountry"
+  },
+  {
+    icon: <ArticleOutlinedIcon />,
+    name: 'PDF playzone',
+    link: "/dashboard/pdf-playzone"
   }
 ];

@@ -21,6 +21,7 @@ import AlfredNobel from "../pages/DashboardPages/NobelPrizes/AlfredNobel/AlfredN
 import NobelPrizesHistory from "pages/DashboardPages/NobelPrizes/NobelPrizesHistory/NobelPrizesHistory";
 import SearchCountry from "pages/DashboardPages/SearchCountry/SearchCountry";
 import Profile from "pages/DashboardPages/Profile/Profile";
+import PDFPlayzone from "pages/DashboardPages/PDFPlayzone/PDFPlayzone";
 
 const RouteComponent = () => {
   return (
@@ -58,6 +59,7 @@ const RouteComponent = () => {
           </Route>
           <Route path={"searchCountry"} element={<SearchCountry />} />
           <Route path={"profile"} element={<Profile />} />
+          <Route path={"pdf-playzone"} element={<PDFPlayzone />} />
         </Route>
         {/* Dashboard Routes */}
 
