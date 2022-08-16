@@ -1,25 +1,27 @@
 import axios from "../axios/axios";
 
+const baseUrl = 'http://localhost:8080/';
+
 export const loginService = async (data) => {
-  const url = "https://beelytical.kritin.tech/api/commanloginuser";
+  const url = baseUrl + "commanloginuser";
   const res = await axios.post(url, data);
   return res;
 };
 
 export const registrationService = async (data) => {
-  const url = "https://beelytical.kritin.tech/api/signup";
+  const url = baseUrl + "signup";
   const res = await axios.post(url, data);
   return res;
 };
 
 export const forgotPassword = async (data) => {
-  const url = "https://beelytical.kritin.tech/api/commanforgotpassword";
+  const url = baseUrl + "commanforgotpassword";
   const res = await axios.post(url, data);
   return res;
 };
 
 export const resetPassword = async (data) => {
-  const url = "https://beelytical.kritin.tech/api/commanresetpassword";
+  const url = baseUrl + "commanresetpassword";
   const res = await axios.post(url, data);
   return res;
 };

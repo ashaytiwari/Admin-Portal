@@ -14,7 +14,7 @@ const responseHandler = (response) => {
 
 const errorHandler = (error) => {
   console.log(error, " <<<<<<<<<<<<<<<<<<error ");
-  window.location = "/error";
+  // window.location = "/error";
   // return error;
 };
 

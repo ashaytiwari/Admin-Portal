@@ -2,7 +2,7 @@ import axios from "axios/axios";
 
 export const getUserProfileInformation = async (id) => {
 
-  const url = `https://beelytical.kritin.tech/api/userprofile?user_id=${id}`;
+  const url = `http://localhost:8080/userprofile?user_id=${id}`;
 
   const res = await axios.get(url);
 
@@ -12,7 +12,7 @@ export const getUserProfileInformation = async (id) => {
 
 export const uploadFile = async (param) => {
 
-  const url = 'https://beelytical.kritin.tech/api/fileupload';
+  const url = 'http://localhost:8080/fileupload';
 
   const res = await axios.post(url, param, {
     headers: {
@@ -26,7 +26,7 @@ export const uploadFile = async (param) => {
 
 export const updateUserProfile = async (param) => {
 
-  const url = 'https://beelytical.kritin.tech/api/updatestudentprofilepicture';
+  const url = 'http://localhost:8080/updatestudentprofilepicture';
 
   const res = await axios.post(url, param);
 
