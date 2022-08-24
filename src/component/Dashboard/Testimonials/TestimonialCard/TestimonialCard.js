@@ -34,6 +34,7 @@ function TestimonialCard(props) {
       pauseAudio();
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio]);
 
   useEffect(() => {

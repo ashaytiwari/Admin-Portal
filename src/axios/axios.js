@@ -13,6 +13,7 @@ const responseHandler = (response) => {
 };
 
 const errorHandler = (error) => {
+  // eslint-disable-next-line no-console
   console.log(error, " <<<<<<<<<<<<<<<<<<error ");
   // window.location = "/error";
   // return error;

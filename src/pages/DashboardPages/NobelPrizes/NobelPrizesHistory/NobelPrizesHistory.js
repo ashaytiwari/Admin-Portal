@@ -35,6 +35,7 @@ function NobelPrizesHistory() {
       dispatch(setNobelPrizesData([]));
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, pageNumber]);
 
   const scrollToTop = () => {

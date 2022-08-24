@@ -9,45 +9,13 @@
     text-align: center;
   }
 
-  .playzoneControls {
-    margin: 40px 0;
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 20px;
-  }
-
-  .playzoneControl {
-    // width: 100%;
-    background-color: var(--secondaryBackground);
-    border-radius: 20px;
-    margin: 20px 0;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.59);
-
-    .controlHeader {
-      background-color: var(--primary);
-      padding: 20px 0;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      text-align: center;
-
-      h6 {
-        margin: 0;
-        font-size: 20px;
-        font-family: "Lato-Bold";
-        color: #fff;
-      }
-    }
-
-    .controlBody {
-      padding: 50px 0;
-      text-align: center;
-
-      .playzoneIcon {
-        color: var(--primary);
-        font-size: 60px;
-      }
-    }
+  .playzoneLabel {
+    font-size: 20px;
+    color: var(--grey);
+    font-family: 'Lato-Regular';
+    margin: 8px 0;
+    width: 100%;
+    text-align: center;
   }
 
 }
