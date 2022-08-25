@@ -18,4 +18,45 @@
     text-align: center;
   }
 
+  .pdfControlsContainer {
+    display: grid;
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+    column-gap: 20px;
+  }
+
+}
+
+.dialogHeader {
+  display: grid;
+  grid-template-columns: auto 40px;
+  column-gap: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--text);
+
+  h3 {
+    color: var(--primary);
+    font-size: 18px;
+    font-family: 'Lato-Bold';
+    margin: 0;
+  }
+
+  .closeDialogControl {
+    background-color: var(--lightPrimary);
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    display: flex;
+  }
+}
+
+.dialogBody {
+  min-height: 500px;
+
+  iframe {
+    width: 100%;
+    min-height: 500px;
+  }
 }

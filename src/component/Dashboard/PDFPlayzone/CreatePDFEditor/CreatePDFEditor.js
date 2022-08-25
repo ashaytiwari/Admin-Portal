@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useFormik } from 'formik';
+import { useSnackbar } from 'notistack';
+import { IconButton } from '@mui/material';
+
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
 import Button from 'component/UI/Button/Button';
 
+import { validateForm } from './utilities';
+
 import styles from './CreatePDFEditor.module.scss';
 
-function CreatePDFEditor() {
+function CreatePDFEditor(props) {
+
+  const { onCreate } = props;
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [description, setDescription] = useState(['']);
 
   const formik = useFormik({
     initialValues: {
@@ -14,21 +26,77 @@ function CreatePDFEditor() {
       heading: '',
       subHeading: '',
       image: '',
-      text: [''],
       link: ''
     },
-    validate() { },
-    onSubmit() { }
+    validate: validateForm,
+    onSubmit: handleCreatePDFFormSubmitEvent
   });
 
   function handleAddMoreDescription() {
 
-    const text = '';
+    if (description.length === 10) {
 
-    // formik.hand
+      enqueueSnackbar('Maximum 10 set of descriptions can be added!', { variant: 'error' });
+
+      return;
+    }
+
+    const _description = [...description];
+
+    _description.push('');
+
+    setDescription(_description);
+
+  }
+
+  function handleRemoveDescriptionControl(index) {
+
+    const _description = [...description];
+
+    _description.splice(index, 1);
+
+    setDescription(_description);
+
+  }
+
+  function handleDescriptionInputControlChange(index, value) {
+
+    const _description = [...description];
+
+    _description[index] = value;
+
+    setDescription(_description);
+
+  }
+
+  function handleCreatePDFFormSubmitEvent() {
+
+    const data = {
+      ...formik.values,
+      description
+    };
+
+    onCreate(data);
+
+  }
+
+  function renderError(error) {
+
+    if (!error) {
+      return;
+    }
+
+    return <p className={styles.errorMessage}>{error}</p>;
+
   }
 
   function renderInputTextFormRow(label, fieldName, placeholder) {
+
+    let error = '';
+
+    if (formik.errors[fieldName] !== '' && formik.touched[fieldName] === true) {
+      error = formik.errors[fieldName];
+    }
 
     const inputTextFormControlAttributes = {
       type: 'text',
@@ -44,7 +112,28 @@ function CreatePDFEditor() {
       <div className={styles.formRow}>
         <label className={styles.formLabel}>{label}</label>
         <input {...inputTextFormControlAttributes} />
+        {renderError(error)}
       </div>
+    );
+  }
+
+  function renderRemoveDescriptionControl(index) {
+
+    if (index === 0) {
+      return;
+    }
+
+    const descriptionRemoveControlAttributes = {
+      className: styles.descriptionRemoveControl,
+      onClick() {
+        handleRemoveDescriptionControl(index);
+      }
+    };
+
+    return (
+      <IconButton {...descriptionRemoveControlAttributes}>
+        <DeleteOutlineRoundedIcon />
+      </IconButton>
     );
   }
 
@@ -60,14 +149,15 @@ function CreatePDFEditor() {
       className: styles.inputTextFormControl,
       rows: 5,
       value: item,
-      onChange() {
-
+      onChange(event) {
+        handleDescriptionInputControlChange(index, event.target.value);
       }
     };
 
     return (
       <div {...descriptionFormControlContainerAttributes}>
         <textarea {...textareaControlAttributes} />
+        {renderRemoveDescriptionControl(index)}
       </div>
     );
 
@@ -76,6 +166,7 @@ function CreatePDFEditor() {
   function renderAddMoreDescriptionControl() {
 
     const addMoreDescriptionControl = {
+      type: 'button',
       className: styles.addMoreControl,
       onClick: handleAddMoreDescription
     };
@@ -94,7 +185,7 @@ function CreatePDFEditor() {
 
         <div className={styles.descriptionControls}>
           {
-            formik.values.text.map((item, index) => (
+            description.map((item, index) => (
               renderTextareaFormControlRow(item, index)
             ))
           }
@@ -113,12 +204,17 @@ function CreatePDFEditor() {
 
   return (
     <form {...createPDFEditorAttributes}>
+
       {renderInputTextFormRow('Title*', 'title', 'Title for pdf document')}
       {renderInputTextFormRow('Heading*', 'heading', 'Heading')}
       {renderInputTextFormRow('Sub heading*', 'subHeading', 'Sub heading')}
       {renderInputTextFormRow('Image*', 'image', 'Image url(address)')}
       {renderInputTextFormRow('Link', 'link', 'Link url')}
+
       {renderFormTextSection()}
+
+      <Button type='submit'>Create</Button>
+
     </form>
   );
 }
