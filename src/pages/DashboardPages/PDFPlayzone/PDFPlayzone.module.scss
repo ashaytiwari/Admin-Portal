@@ -24,6 +24,24 @@
     column-gap: 20px;
   }
 
+  .pdfIcon {
+    width: 100px;
+    height: 100px;
+    color: var(--grey);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .pdfContentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
 }
 
 .dialogHeader {

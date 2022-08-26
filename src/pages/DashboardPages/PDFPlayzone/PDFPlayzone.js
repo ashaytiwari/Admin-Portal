@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import { IconButton } from '@mui/material';
 
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 
 import CreatePDFEditor from 'component/Dashboard/PDFPlayzone/CreatePDFEditor/CreatePDFEditor';
@@ -29,14 +30,6 @@ function PDFPlayzone() {
 
   function openPDFViewer() {
 
-    // const element = dialogContainerReference.current;
-
-    // if (element === null) {
-    //   return;
-    // }
-
-    // element.requestFullscreen();
-
     setDisplayPDFViewer(true);
 
   }
@@ -47,12 +40,8 @@ function PDFPlayzone() {
       return;
     }
 
-    return (
-      <div className={styles.pdfControlsContainer}>
-        <Button onClick={openPDFViewer}>View PDF</Button>
-        <Button>Download PDF</Button>
-      </div>
-    );
+    return <Button onClick={openPDFViewer}>View PDF</Button>;
+
   }
 
   function renderPDFViewer() {
@@ -100,8 +89,11 @@ function PDFPlayzone() {
   return (
     <div className={styles.pdfPlayzoneContainer}>
 
-      <h3 className={styles.playzoneHeading}>PDF Playzone</h3>
-      <label className={styles.playzoneLabel}>Let's create pdf</label>
+      <div className={styles.pdfContentContainer}>
+        <h3 className={styles.playzoneHeading}>PDF Playzone</h3>
+        <label className={styles.playzoneLabel}>Let's create pdf</label>
+        <PictureAsPdfOutlinedIcon className={styles.pdfIcon} />
+      </div>
 
       <CreatePDFEditor onCreate={createPDF} />
 
