@@ -52,3 +52,13 @@ export const getNewsFeedList = async () => {
   return res;
 
 };
+
+export const getInfinitePhotos = async (page) => {
+
+  const url = `https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=30`;
+
+  const res = await axios.get(url);
+
+  return res;
+
+};

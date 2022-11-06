@@ -5,6 +5,7 @@ import StarsIcon from "@mui/icons-material/Stars";
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 
 export const sidebarData = [
   {
@@ -41,5 +42,10 @@ export const sidebarData = [
     icon: <ArticleOutlinedIcon />,
     name: 'PDF playzone',
     link: "/dashboard/pdf-playzone"
+  },
+  {
+    icon: <AllInclusiveIcon />,
+    name: 'Infinite Scrolling',
+    link: "/dashboard/infinite-scrolling"
   }
 ];

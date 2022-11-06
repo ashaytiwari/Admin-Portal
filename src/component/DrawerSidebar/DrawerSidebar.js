@@ -26,7 +26,7 @@ const DrawerSidebar = () => {
           <h6>Home</h6>
         </div>
         {sidebarData.map((item, index) => (
-          <SidebarItem data={item} index={index} />
+          <SidebarItem data={item} index={index} key={index} />
         ))}
       </div>
     </div>

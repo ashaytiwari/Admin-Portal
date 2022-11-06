@@ -22,6 +22,7 @@ import NobelPrizesHistory from "pages/DashboardPages/NobelPrizes/NobelPrizesHist
 import SearchCountry from "pages/DashboardPages/SearchCountry/SearchCountry";
 import Profile from "pages/DashboardPages/Profile/Profile";
 import PDFPlayzone from "pages/DashboardPages/PDFPlayzone/PDFPlayzone";
+import InfiniteScrolling from "pages/DashboardPages/InfiniteScrolling/InfiniteScrolling";
 
 const RouteComponent = () => {
   return (
@@ -60,6 +61,7 @@ const RouteComponent = () => {
           <Route path={"searchCountry"} element={<SearchCountry />} />
           <Route path={"profile"} element={<Profile />} />
           <Route path={"pdf-playzone"} element={<PDFPlayzone />} />
+          <Route path={"infinite-scrolling"} element={<InfiniteScrolling />} />
         </Route>
         {/* Dashboard Routes */}
 
