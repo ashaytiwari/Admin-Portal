@@ -14,7 +14,7 @@ function PhotoCard(props) {
   return (
     <div className={styles.photoCardMain}>
       <img {...thumbnailImageAttributes} alt='thumbnail' />
-      <label className={styles.photoText}>{photo.title}</label>
+      <label className={styles.photoText}>{photo.id} - {photo.title}</label>
     </div>
   );
 

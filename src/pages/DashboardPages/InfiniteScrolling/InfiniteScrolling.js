@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { useSnackbar } from 'notistack';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 
@@ -16,7 +17,7 @@ function InfiniteScrolling() {
   const [rootState, setRootState] = useState({
     loading: false,
     photos: [],
-    page: 1
+    page: 0
   });
 
   useEffect(() => {
@@ -35,31 +36,37 @@ function InfiniteScrolling() {
       };
     });
 
-    getInfinitePhotos(rootState.page).then((res) => {
+    getInfinitePhotos(rootState.page + 1)
+      .then((res) => {
 
-      if (res.status === 200) {
+        if (res.status === 200) {
 
-        setRootState((_rootState) => {
-          return {
-            ..._rootState,
-            loading: false,
-            photos: res.data
-          };
-        });
+          setRootState((_rootState) => {
+            return {
+              ..._rootState,
+              loading: false,
+              photos: [..._rootState.photos, ...res.data],
+              page: rootState.page + 1
+            };
+          });
 
-      } else {
+        } else {
 
-        setRootState((_rootState) => {
-          return {
-            ..._rootState,
-            loading: false
-          };
-        });
+          setRootState((_rootState) => {
+            return {
+              ..._rootState,
+              loading: false
+            };
+          });
 
-        enqueueSnackbar(res.statusText, { variant: "error" });
+          enqueueSnackbar(res.statusText, { variant: "error" });
 
-      }
-    });
+        }
+      })
+      .catch((exception) => {
+        // eslint-disable-next-line no-console
+        console.log(exception);
+      });
 
   }
 
@@ -85,23 +92,39 @@ function InfiniteScrolling() {
 
   }
 
+  function renderSpinner() {
+
+    if (rootState.loading === false) {
+      return;
+    }
+
+    return <h4 className={styles.loadingText}>Loading....</h4>;
+
+  }
+
   function renderList() {
 
+    const infiniteScrollAttributes = {
+      dataLength: rootState.photos.length,
+      next: loadPhotos,
+      hasMore: true,
+      loader: renderSpinner(),
+      className: styles.photosList
+    };
+
     return (
-      <div className={styles.photosList}>
-        {
-          rootState.photos.map((photo, index) => (
-            renderPhotoCard(photo, index)
-          ))
-        }
+      <div className={styles.photosListContainer}>
+        <InfiniteScroll {...infiniteScrollAttributes}>
+          {
+            rootState.photos.map((photo, index) => (
+              renderPhotoCard(photo, index)
+            ))
+          }
+        </InfiniteScroll>
       </div>
     );
 
   }
-
-  // if (rootState.loading === true) {
-  //   return ;
-  // }
 
   return (
     <div id={styles.infiniteScrollingMain}>
